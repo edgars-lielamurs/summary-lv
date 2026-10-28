@@ -1,0 +1,33 @@
+
+Mākslīgie neironu tīkli ir kļuvuši par nozīmīgu tehnoloģiju datorredzes un autonomo sistēmu jomā, dažos gadījumos sasniedzot
+vai pat pārsniedzot cilvēka smadzeņu veiktspēju. Tomēr to darbības pamatā ir matricu reizināšanas skaitliski aprēķini, un tie patērē
+ievērojami vairāk enerģijas nekā bioloģiskās neironu sistēmas. Tas apgrūtina to izmantošanu iegultajās skaitļošanas
+platformās, īpaši reāllaika apstrādes uzdevumos, kuros tiek izmantoti reti notikumu sensoru dati. Neiromorfā
+skaitļošana, kuras pamatā ir pulsējoši neironu tīkli (SNN), ir alternatīva pieeja, kas cenšas
+atdarināt bioloģisko neironu uz notikumiem balstīto komunikāciju un aprēķinus.
+
+Lai gan neiromorfie algoritmi un notikumu sensori, piemēram, dinamiskās redzes un kohleārie sensori, ir ievērojami
+attīstījušies, aparatūras paātrināta skaitļošana joprojām ir aktuāls izaicinājums. Lielākā daļa dziļo SNN modeļu joprojām
+tiek novērtēti, izmantojot programmatūras simulācijas ietvarus uz tradicionālās CPU un GPU aparatūras. Tādēļ SNN potenciālās
+energoefektivitātes priekšrocības bieži vien ir ierobežotas.
+
+Specializēti aparatūras paātrinātāji, piemēram, ASIC un FPGA, ir spējīgi novērst šos ierobežojumus, izpildot retos
+aprēķinus specializētā aparatūrā. Īpaši FPGA nodrošina līdzsvaru starp elastību un energoefektivitāti, ļaujot izstrādāt un
+pētīt specializētus paātrinātājus, izvairoties no sarežģītām un dārgām pielāgotu ASIC risinājumu implementācijām.
+
+Šajā darbā tiek pētīta dziļo pulsējošu neironu tīklu uz FPGA balstīta paātrināšana attēlu atpazīšanas uzdevumiem. Darbs
+pievēršas uz pārkonfigurējamas aparatūras arhitektūras izstrādi, pulsējošu neironu modeļu implementāciju un pulsējošu
+konvolucionālo neironu tīklu praktisku pielietojumu 2D un 3D uztveres uzdevumos.
+
+Izstrādātais paātrinātājs implementē notikumu konvolūciju, konfigurējamus noplūstošus integrē-un-pulsē (LIF) un Ižikeviča
+neironu modeļus, kā arī adrešu-notikumu reprezentācijas (AER) komunikāciju pārkonfigurējamā, uz PCIe balstītā FPGA ietvarā.
+% Lai demonstrētu arhitektūras pielietojamību reālu problēmu risināšanā, tā tiek novērtēta attēlu klasifikācijas un 3D objektu
+% detektēšanas uzdevumos, izmantojot notikumu attēlu, LiDAR un lidojuma laika punktu mākoņu datu kopas.
+FPGA realizācija ir eksperimentāli novērtēta, izmantojot attēlu klasifikācijas uzdevumus. Atsevišķi ir izstrādāta
+un novērtēta 3D-SCNN modeļa arhitektūra objektu noteikšanai, izmantojot LiDAR un lidojuma laika (ToF) sensoru punktu mākoņu datu
+kopas, demonstrējot impulsu neironu tīklu praktisku pielietojamību telpiskās vides uztveres uzdevumos.
+
+Eksperimentālie rezultāti parāda, ka FPGA implementācija nodrošina reāllaika inferenci ar ievērojami mazāku enerģijas
+patēriņu salīdzinājumā ar GPU platformām, vienlaikus saglabājot zemu latentumu un augstu caurlaidību. Turklāt izstrādātie
+pulsējošie konvolucionālie neironu tīkli ir pielāgojami arī punktu mākoņu sensoru datu modalitātei, uzsverot notikumu
+uztveres pielāgojamību automatizētām iegultajām sistēmām, kas paļaujas uz punktu mākoņiem balstītu uztveri.

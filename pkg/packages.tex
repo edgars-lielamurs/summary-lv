@@ -1,0 +1,56 @@
+\usepackage{geometry}              % TODO: docstring
+\usepackage{graphicx}              % TODO: docstring
+\usepackage{fancyhdr}              % TODO: docstring
+% \usepackage{xcolor}                % TODO: docstring
+\usepackage[table]{xcolor}
+\usepackage{wrapfig}               % TODO: docstring
+\usepackage{listings}              % TODO: docstring
+\usepackage{caption}               % TODO: docstring
+\usepackage{subcaption}            % TODO: docstring
+\usepackage{hyperref}              % TODO: docstring
+\usepackage{enumitem}              % TODO: docstring
+\usepackage{titlesec}              % TODO: docstring
+% \usepackage{soul}                  % TODO: docstring
+\usepackage{svg}                   % TODO: docstring
+\usepackage{datetime}              % TODO: docstring
+\usepackage{lipsum}                % TODO: docstring
+\usepackage{etoolbox}              % TODO: docstring
+\usepackage{polyglossia}           % TODO: docstring
+% \usepackage{amsmath}               % TODO: docstring
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{algorithmic}
+\usepackage{titletoc}              % TODO: docstring
+\usepackage{totcount}              % TODO: docstring
+\usepackage{pgffor}                % looping logic
+\usepackage{glossaries}            % acronyms, abbreviations
+\usepackage{glossaries-extra}      % acronyms, abbreviations
+\usepackage{indentfirst}           % sets \@afterindentfalse to (always) true
+\usepackage{siunitx}
+\usepackage[edges]{forest}
+\usepackage{tikz}
+\usetikzlibrary{shadows.blur,shapes.multipart}
+\tikzset{grimsel/.style={rectangle split,rectangle split parts=1,draw,
+    fill=white,blur shadow,rounded corners,align=center}}
+\usetikzlibrary{arrows.meta, positioning}
+\usepackage[titletoc,title]{appendix}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{mfirstuc}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{calc}
+\usepackage{adjustbox}
+\usepackage{totcount}
+\usepackage{lastpage}
+\usepackage{etoolbox}
+\newtotcounter{allfigs}
+\newtotcounter{alltabs}
+\AtBeginEnvironment{figure}{\stepcounter{allfigs}}
+\AtBeginEnvironment{figure*}{\stepcounter{allfigs}}
+\AtBeginEnvironment{table}{\stepcounter{alltabs}}
+\AtBeginEnvironment{table*}{\stepcounter{alltabs}}

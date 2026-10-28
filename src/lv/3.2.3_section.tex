@@ -1,0 +1,39 @@
+Vairumā temporālās kodēšanas gadījumu pēdējā slānī izmanto impulsu akumulatoru \cite{Fang2021, kim2021, rathi2020}. Galīgo izeju aprēķina kā vairāku impulsu summu visos \(T\) laika soļos, lai veicinātu visaugstāko impulsu ģenerēšanas biežumu neironam, kas saistīts ar sagaidāmo izeju.
+
+Impulsu pamattīkla izejas impulsi tiek pārveidoti uzkrātā pazīmju reprezentācijā, pirms tos nodod \Gls{ssd} detektēšanas galvai. Izeja tiek vidējota visos \(T\) laika soļos. Izejas pazīmju kartei ar kanālu \(c\) un telpiskajām koordinātām \(h, w\) laikā vidējoto pazīmju reprezentāciju nosaka
+\begin{equation}
+    F_{c,h,w} =
+    \frac{1}{T}\sum_{t=0}^{T-1} S_{t,c,h,w},
+\end{equation}
+kur \(S_{t,c,h,w}\in\{0,1\}\) ir neirona izejas impulss laika solī \(t\). Iegūtā \(F\) reprezentē impulsu pazīmju kartes vidējo impulsu aktivitāti. Pēc tam detektēšanas galva veic objektu klasifikāciju, ietverošo taisnstūru regresiju un orientācijas novērtēšanu.
+
+Ietverošo taisnstūru detektēšanai un klasifikācijai izmanto \Gls{ssd} \cite{liu2016} prognozēšanas galvas. Tās saņem \Gls{snn} pamattīkla ģenerētās pazīmju kartes, nodrošinot vienlaicīgu objektu detektēšanu un to ietverošo taisnstūru regresiju. Paplašinot iepriekšējos darbus \cite{Cordone2022, fan2025}, arhitektūra papildināta ar orientācijas regresiju, kas piedāvāta darbā \cite{simony2018}, lai detektētu vairāku klašu orientētus ietverošos taisnstūrus. Katram detektētajam objektam detektēšanas galva ģenerē izejas vektoru
+\begin{equation}
+    d = [p_c, b_x, b_y, b_w, b_l, b_\theta, c],
+\end{equation}
+kur \(p_c\) ir prognozētā ticamības vērtība, \(b_x\) un \(b_y\) ir ietverošā taisnstūra centra koordinātas \Gls{bev} plaknē, \(b_w\) un \(b_l\) ir tā platums un garums, \(b_\theta\) ir tā orientācijas leņķis attiecībā pret \Gls{bev} koordinātām un \(c\) ir prognozētā objekta klase.
+
+Tīkls tiek apmācīts ar daudzuzdevumu mērķfunkciju, kas apvieno klasifikācijas, ietverošā taisnstūra regresijas un orientācijas regresijas zudumus:
+\begin{equation}
+  \mathcal{L} =
+  \mathcal{L}_{cls}
+  + \lambda_{box}\mathcal{L}_{box}
+  + \lambda_{ang}\mathcal{L}_{ang},
+\end{equation}
+kur \(\mathcal{L}_{cls}\) ir objektu klasifikācijas zudums, \(\mathcal{L}_{box}\) ir ietverošā taisnstūra regresijas zudums un \(\mathcal{L}_{ang}\) ir orientācijas regresijas zudums. Koeficienti \(\lambda_{box}\) un \(\lambda_{ang}\) nosaka regresijas locekļu ieguldījumu kopējā apmācības mērķfunkcijā.
+
+Klasifikācijas zudumam \(\mathcal{L}_{cls}\) izmanto fokālo zuduma funkciju \cite{lin2017}, lai samazinātu vieglāk klasificējamu negatīvo piemēru ieguldījumu un risinātu klašu nelīdzsvarotību. Ietverošā taisnstūra un orientācijas regresijai izmanto \textit{Smooth L1} zuduma funkciju tās noturības pret izlecošām vērtībām un stabilās optimizācijas uzvedības dēļ. Tādējādi apvienotā mērķfunkcija apmāca impulsu pamattīklu un detektēšanas galvas iegūt pazīmes un vienlaikus optimizēt objektu lokalizāciju un orientāciju.
+
+\Gls{ssd} klasifikācijas un regresijas galvas veido viens konvolūcijas slāņu posms bez papildu aktivācijas funkcijām starp
+tiem. Tas ir īpaši piemēroti ar aparatūru paātrinātiem \Gls{snn}, jo netiek pievienoti aktivācijas posmi, kuriem būtu
+nepieciešama papildu stāvokļu glabāšana un aprēķini, tādējādi nodrošinot saderību ar uz notikumiem balstītu apstrādi \Gls{fpga}
+realizācijās. Šādās realizācijās svarīgi, lai aparatūras paātrinātājs atbalstītu papildu savienojumus, kas nodrošina piekļuvi
+dažādos pamattīkla līmeņos iegūtām daudzlīmeņu pazīmju kartēm.
+
+Lai saglabātu objektu identitāti starp kadriem, detektors apvienots ar vairāku objektu izsekošanas algoritmu
+\textit{AB3DMOT} \cite{weng2020}. Izsekotājs no detektēšanas galvas saņem prognozētos orientētos ietverošos taisnstūrus,
+klašu marķējumus un ticamības vērtības un sasaista detektējumus starp kadriem, izmantojot konfigurējamu telpiskās līdzības
+metriku. Trajektorija tiek apstiprināta pēc noteikta veiksmīgu sasaistījumu skaita un saglabāta ierobežotu kadru skaitu bez
+atbilstoša detektējuma.
+
+

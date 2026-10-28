@@ -1,0 +1,66 @@
+\Gls{lif} neirona modelis un tā varianti ir plaši izmantoti neiromorfajās un digitālās aparatūras realizācijās to relatīvās
+vienkāršības dēļ salīdzinājumā ar bioloģiski precīziem modeļiem \cite{sommer2022, corradi2021}. Piemēram, \Gls{lif} modelim vienā
+laika solī nepieciešamas tikai 5 peldošā punkta operācijas, savukārt Hodžkina–Hakslija modelim nelineārās jonu kanālu
+dinamikas dēļ vajag līdz pat 1200 operācijām \cite{hwang2024}. Tomēr shēmu izveide \Gls{lif} neironu simulācijai lielā mērogā
+joprojām ir sarežģīta \cite{kousanakis2017}.
+
+Kā parādīts (\ref{eq:LIF_exp}), \Gls{lif} membrānas dinamikas analītiskais atrisinājums ietver eksponenciālās dilšanas
+locekli. Eksponenciālās funkcijas tieša aprēķināšana katrā laika solī katram neironam var kļūt skaitļošanas ziņā dārga, īpaši
+\Gls{fpga} sistēmās.
+
+Viena aparatūras risinājumu kategorija eksponenciālo funkciju aproksimē tieši. Bieži izmantotās pieejas ietver \gls{pwl}
+aproksimācijas \cite{chakraborty2025}, bitu nobīdes metodes ar bāzi 2 \cite{corradi2021}, uz \gls{cordic} balstītas
+realizācijas \cite{heidarpour2016} un uzmeklēšanas tabulu metodes \cite{kim2020}. Lai gan šīs pieejas ir efektīvas, tās
+palielina sarežģītību un resursu patēriņu.
+
+Otra risinājumu grupa analītiskās formas aprēķina vietā izmanto diferenciālvienādojuma skaitlisko diskretizāciju. Praksē
+lielākā daļa \Gls{snn} apmācības un inferences rīku ķēžu izmanto šādus vienkāršotus diskrētus modeļus \cite{Fang2021},
+demonstrējot augstas precizitātes inferences rezultātus. Dažās realizācijās \Gls{lif} dinamika tiek vēl vairāk vienkāršota, katrā laika solī samazinot membrānas potenciālu ar fiksētu dilšanas koeficientu \cite{gupta2020}.
+
+Skaitlisko diskretizāciju iegūst, izmantojot tiešo Eilera metodi. Tad atvasinājumu aproksimē šādi \cite{guo2022, Fang2021}:
+\begin{equation}
+    \frac{du(t)}{dt} \approx \frac{u[t+1] - u[t]}{\Delta t}.
+\end{equation}
+
+To ievietojot nepārtraukta laika \Gls{lif} vienādojumā (\ref{eq:LIF_model}) \cite{guo2022, Fang2021}, iegūst
+\begin{equation}
+    \tau_m \frac{u[t+1] - u[t]}{\Delta t} = - u[t] + R_m i[t].
+\end{equation}
+Izsakot nākamo membrānas potenciālu, iegūst
+\begin{equation}
+    u[t+1] = u[t] + \frac{\Delta t}{\tau_m} \left(-u[t] + R_m i[t] \right).
+\end{equation}
+Pārkārtojot iegūst
+\begin{equation}
+    u[t+1] = \left(1 - \frac{\Delta t}{\tau_m}\right) u[t] + \frac{\Delta t}{\tau_m} R_m i[t].
+\end{equation}
+Dilšanas koeficientu var definēt kā
+\begin{equation}
+    \beta = 1 - \frac{\Delta t}{\tau_m},
+\end{equation}
+un atjaunināšanas izteiksme kļūst par
+\begin{equation}
+    u[t+1] = \beta u[t] + \frac{\Delta t}{\tau_m} R_m i[t].
+    \label{eq:LIF_euler}
+\end{equation}
+
+Šis diskrētais atrisinājums novērš nepieciešamību aprēķināt eksponenciālo funkciju un reducē neirona atjaunināšanu līdz vienkāršām reizināšanas un saskaitīšanas operācijām. Digitālajā aparatūrā un GPU šādas operācijas ir ievērojami efektīvākas, tādēļ tiešā Eilera aproksimācija ir standarta izvēle lielu \Gls{snn} apmācībai un realizācijai aparatūrā. Turklāt aparatūras realizācijās dilšanas locekli $\beta u[t]$ var vienkāršot, lai izslēgtu reizinātājus. Ja dilšanas koeficientu ierobežo līdz daļai ar divnieka pakāpi,
+\begin{equation}
+    \beta = 1 - 2^{-k},
+    \label{eq:quant_beta}
+\end{equation}
+membrānas atjaunināšanas izteiksmi
+\begin{equation}
+    u[t+1] = \beta u[t] + C_m i[t]
+\end{equation}
+var pārrakstīt šādi:
+\begin{equation}
+    u[t+1] = u[t] - \frac{u[t]}{2^k} + C_m i[t].
+\end{equation}
+Tā kā dalīšana ar $2^k$ fiksētā komata aritmētikā atbilst bitu nobīdei pa labi,
+\begin{equation}
+    u[t+1] = u[t] - (u[t] \gg k) + C_m i[t],
+\end{equation}
+dilšanas operāciju var realizēt, izmantojot tikai nobīdes un saskaitīšanas operācijas.
+
+

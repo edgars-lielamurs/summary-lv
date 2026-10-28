@@ -1,0 +1,22 @@
+\setdefaultlanguage{latvian}
+\setotherlanguage{english}
+\sisetup{output-decimal-marker={,}}
+% \titleformat{\subsubsection}{\normalfont\setstretch{1}\hyphenpenalty=10000\fontsize{12}{15}\selectfont\bfseries}{}{0pt}{}
+% \titleformat{\paragraph}[runin]{\normalfont\fontsize{12}{15}\selectfont\bfseries}{}{0pt}{}
+% \titleformat{\subsubsection}
+%     {\fontsize{13}{16}\bfseries}
+%     {\thesubsubsection}
+%     {2mm}
+% \titleformat{\paragraph}[runin]
+%     {\fontsize{12}{15}\bfseries}
+%     {\theparagraph}
+%     {2mm}
+%     {\capitalisewords}
+% \setcounter{secnumdepth}{2}
+% \setcounter{tocdepth}{4}
+\DeclareCaptionLabelFormat{lvfigure}{#2. att.}
+\DeclareCaptionLabelFormat{lvtable}{#2. tabula}
+\captionsetup[figure]{labelformat=lvfigure,labelsep=space}
+\captionsetup[table]{labelformat=lvtable}
+\DeclareFieldFormat{pages}{-- #1 lpp.}
+\AtBeginDocument{\selectlanguage{latvian}\input{src/lv/hyphenation.tex}}

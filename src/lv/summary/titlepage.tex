@@ -1,0 +1,45 @@
+\thispagestyle{empty}
+\makeatletter
+\begin{titlepage}
+
+\begin{center}
+  {\fontsize{12}{14}\selectfont\textbf{\MakeUppercase{\@university}}}\\
+  {\fontsize{12}{14}\selectfont \@faculty}\\
+  {\fontsize{12}{14}\selectfont \@institute}
+\end{center}
+
+\vspace{30mm}
+
+\begin{center}
+  {\fontsize{12}{14}\selectfont\textbf{\@author}}\\
+  {\fontsize{10}{13}\selectfont Doktora studiju programmas „\@program” doktorants}
+\end{center}
+
+\vspace{30mm}
+
+\begin{center}
+  {\fontsize{18}{22}\selectfont\textbf{\MakeUppercase{\@title}}}\\
+  \vspace{5mm}
+  {\fontsize{14}{18}\selectfont\textbf{Promocijas darba kopsavilkums}}
+\end{center}
+
+\vspace{1cm}
+
+\begin{flushright}
+{\fontsize{12}{14}\selectfont Zinātniskie vadītāji} \\
+
+\foreach\index in {1,...,\csuse{theSupervisorCounter}}{
+  {\fontsize{12}{14}\selectfont \getSupervisorDegree{\index}, \MakeLowercase{\getSupervisorPosition{\index}}}\\
+  {\fontsize{14}{16}\selectfont \getSupervisorName{\index}}\\
+  \vspace{5mm}
+}
+\end{flushright}
+
+\vspace{\fill}
+\begin{center}
+{\fontsize{14}{16}\selectfont RTU Izdevniecība\\\@city~\@year}
+\end{center}
+
+\end{titlepage}
+\makeatother
+\pagebreak

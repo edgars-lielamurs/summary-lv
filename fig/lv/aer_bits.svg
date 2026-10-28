@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="svg1" width="635.83997" height="94.720001" viewBox="0 0 635.83997 94.720001">
+  <defs id="defs1">
+    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath4">
+      <path d="M 27.828948,14.365736 H 692.50778 V 115.31525 H 27.828948 Z" clip-rule="evenodd" id="path4" />
+    </clipPath>
+    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath19">
+      <path d="M 0,0 H 635.51559 V 95.039996 H 0 Z" clip-rule="evenodd" id="path19" />
+    </clipPath>
+  </defs>
+  <g id="g1">
+    <g id="g2" clip-path="url(#clipPath19)">
+      <path id="path2" d="M 0,0 H 636 V 95 H 0 Z" style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <path id="path3" d="m 150,73 h 40 v 40 h -40 z" style="fill:#eeeeee;fill-opacity:1;fill-rule:nonzero;stroke:#36393d;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.88162876,0,0,0.88162876,0.46519773,-9.6652463)" clip-path="url(#clipPath4)" />
+      <path id="path5" d="m 110,73 h 40 v 40 h -40 z" style="fill:#fff2cc;fill-opacity:1;fill-rule:nonzero;stroke:#36393d;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.88162876,0,0,0.88162876,0.46519773,-9.6652463)" clip-path="url(#clipPath4)" />
+      <path id="path6" d="m 390,73 h 40 v 40 h -40 z" style="fill:#f9f7ed;fill-opacity:1;fill-rule:nonzero;stroke:#36393d;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.88162876,0,0,0.88162876,0.46519773,-9.6652463)" clip-path="url(#clipPath4)" />
+      <path id="path7" d="m 70,73 h 40 v 40 H 70 Z" style="fill:#fff2cc;fill-opacity:1;fill-rule:nonzero;stroke:#36393d;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.88162876,0,0,0.88162876,0.46519773,-9.6652463)" clip-path="url(#clipPath4)" />
+      <path id="path8" d="m 190,73 h 40 v 40 h -40 z" style="fill:#eeeeee;fill-opacity:1;fill-rule:nonzero;stroke:#36393d;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.88162876,0,0,0.88162876,0.46519773,-9.6652463)" clip-path="url(#clipPath4)" />
+      <path id="path9" d="m 230,73 h 40 v 40 h -40 z" style="fill:#eeeeee;fill-opacity:1;fill-rule:nonzero;stroke:#36393d;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.88162876,0,0,0.88162876,0.46519773,-9.6652463)" clip-path="url(#clipPath4)" />
+      <path id="path10" d="m 270,73 h 40 v 40 h -40 z" style="fill:#eeeeee;fill-opacity:1;fill-rule:nonzero;stroke:#36393d;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.88162876,0,0,0.88162876,0.46519773,-9.6652463)" clip-path="url(#clipPath4)" />
+      <path id="path11" d="m 310,73 h 40 v 40 h -40 z" style="fill:#eeeeee;fill-opacity:1;fill-rule:nonzero;stroke:#36393d;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.88162876,0,0,0.88162876,0.46519773,-9.6652463)" clip-path="url(#clipPath4)" />
+      <path id="path12" d="m 350,73 h 40 v 40 h -40 z" style="fill:#eeeeee;fill-opacity:1;fill-rule:nonzero;stroke:#36393d;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.88162876,0,0,0.88162876,0.46519773,-9.6652463)" clip-path="url(#clipPath4)" />
+      <path id="path13" d="m 430,73 h 40 v 40 h -40 z" style="fill:#f9f7ed;fill-opacity:1;fill-rule:nonzero;stroke:#36393d;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.88162876,0,0,0.88162876,0.46519773,-9.6652463)" clip-path="url(#clipPath4)" />
+      <path id="path14" d="m 470,73 h 40 v 40 h -40 z" style="fill:#f9f7ed;fill-opacity:1;fill-rule:nonzero;stroke:#36393d;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.88162876,0,0,0.88162876,0.46519773,-9.6652463)" clip-path="url(#clipPath4)" />
+      <path id="path15" d="m 510,73 h 40 v 40 h -40 z" style="fill:#f9f7ed;fill-opacity:1;fill-rule:nonzero;stroke:#36393d;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.88162876,0,0,0.88162876,0.46519773,-9.6652463)" clip-path="url(#clipPath4)" />
+      <path id="path16" d="m 550,73 h 40 v 40 h -40 z" style="fill:#f9f7ed;fill-opacity:1;fill-rule:nonzero;stroke:#36393d;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.88162876,0,0,0.88162876,0.46519773,-9.6652463)" clip-path="url(#clipPath4)" />
+      <path id="path17" d="m 590,73 h 40 v 40 h -40 z" style="fill:#f9f7ed;fill-opacity:1;fill-rule:nonzero;stroke:#36393d;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.88162876,0,0,0.88162876,0.46519773,-9.6652463)" clip-path="url(#clipPath4)" />
+      <path id="path18" d="m 630,73 h 40 v 40 h -40 z" style="fill:#bac8d3;fill-opacity:1;fill-rule:nonzero;stroke:#23445d;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.88162876,0,0,0.88162876,0.46519773,-9.6652463)" clip-path="url(#clipPath4)" />
+    </g>
+    <g id="g19">
+      <text id="text19" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,411.05624,17.224431)"><tspan id="tspan19" style="font-variant:normal;font-weight:normal;font-size:14.94030px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">AER kolonnas</tspan></text>
+      <text id="text20" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,439.46122,34.857007)"><tspan id="tspan20" style="font-variant:normal;font-weight:normal;font-size:16.00000px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">biti</tspan></text>
+    </g>
+    <g id="g20">
+      <text id="text21" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,208.8602,17.224431)"><tspan id="tspan21" style="font-variant:normal;font-weight:normal;font-size:14.10929px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">AER rindas</tspan></text>
+      <text id="text22" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,227.87032,34.857007)"><tspan id="tspan22" style="font-variant:normal;font-weight:normal;font-size:16.00000px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">biti</tspan></text>
+    </g>
+    <g id="g22">
+      <text id="text23" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,545.06382,17.224431)"><tspan id="tspan23" style="font-variant:normal;font-weight:normal;font-size:11.49889px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">AER pēdējais</tspan></text>
+    </g>
+    <g id="g23">
+      <text id="text24" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,565.63057,34.857007)"><tspan id="tspan24" style="font-variant:normal;font-weight:normal;font-size:11.69044px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">bits</tspan></text>
+    </g>
+    <path id="path24" d="m 30,73 h 40 v 40 H 30 Z" style="fill:#fff2cc;fill-opacity:1;fill-rule:nonzero;stroke:#36393d;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0.88162876,0,0,0.88162876,0.46519773,-9.6652463)" />
+    <g id="g24">
+      <text id="text25" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,40.427778,17.224431)"><tspan id="tspan25" style="font-variant:normal;font-weight:normal;font-size:16.00000px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">AER kanāla</tspan></text>
+    </g>
+    <g id="g25">
+      <text id="text26" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,69.60418,34.857007)"><tspan id="tspan26" style="font-variant:normal;font-weight:normal;font-size:16.00000px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">biti</tspan></text>
+    </g>
+    <g id="g26">
+      <text id="text27" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,569.99738,75.41193)"><tspan id="tspan27" style="font-variant:normal;font-weight:normal;font-size:14px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">0</tspan></text>
+    </g>
+    <g id="g27">
+      <text id="text28" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,534.73223,75.41193)"><tspan id="tspan28" style="font-variant:normal;font-weight:normal;font-size:14px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">1</tspan></text>
+    </g>
+    <g id="g28">
+      <text id="text29" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,499.46708,75.41193)"><tspan id="tspan29" style="font-variant:normal;font-weight:normal;font-size:14px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">2</tspan></text>
+    </g>
+    <g id="g29">
+      <text id="text30" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,464.20193,75.41193)"><tspan id="tspan30" style="font-variant:normal;font-weight:normal;font-size:14px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">3</tspan></text>
+    </g>
+    <g id="g30">
+      <text id="text31" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,428.93678,75.41193)"><tspan id="tspan31" style="font-variant:normal;font-weight:normal;font-size:14px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">4</tspan></text>
+    </g>
+    <g id="g31">
+      <text id="text32" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,393.67163,75.41193)"><tspan id="tspan32" style="font-variant:normal;font-weight:normal;font-size:14px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">5</tspan></text>
+    </g>
+    <g id="g32">
+      <text id="text33" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,358.40648,75.41193)"><tspan id="tspan33" style="font-variant:normal;font-weight:normal;font-size:14px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">6</tspan></text>
+    </g>
+    <g id="g33">
+      <text id="text34" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,323.14133,75.41193)"><tspan id="tspan34" style="font-variant:normal;font-weight:normal;font-size:14px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">7</tspan></text>
+    </g>
+    <g id="g34">
+      <text id="text35" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,287.87618,75.41193)"><tspan id="tspan35" style="font-variant:normal;font-weight:normal;font-size:14px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">8</tspan></text>
+    </g>
+    <g id="g35">
+      <text id="text36" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,252.61103,75.41193)"><tspan id="tspan36" style="font-variant:normal;font-weight:normal;font-size:14px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">9</tspan></text>
+    </g>
+    <g id="g36">
+      <text id="text37" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,214.26017,75.41193)"><tspan id="tspan37" style="font-variant:normal;font-weight:normal;font-size:14px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">10</tspan></text>
+    </g>
+    <g id="g37">
+      <text id="text38" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,179.21543,75.41193)"><tspan id="tspan38" style="font-variant:normal;font-weight:normal;font-size:14px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" dx="0 -0.51953119" y="0">11</tspan></text>
+    </g>
+    <g id="g38">
+      <text id="text39" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,143.72987,75.41193)"><tspan id="tspan39" style="font-variant:normal;font-weight:normal;font-size:14px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">12</tspan></text>
+    </g>
+    <g id="g39">
+      <text id="text40" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,108.46472,75.41193)"><tspan id="tspan40" style="font-variant:normal;font-weight:normal;font-size:14px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">13</tspan></text>
+    </g>
+    <g id="g40">
+      <text id="text41" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,73.199572,75.41193)"><tspan id="tspan41" style="font-variant:normal;font-weight:normal;font-size:14px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">14</tspan></text>
+    </g>
+    <g id="g41">
+      <text id="text42" xml:space="preserve" transform="matrix(0.88162876,0,0,0.88162876,37.934422,75.41193)"><tspan id="tspan42" style="font-variant:normal;font-weight:normal;font-size:14px;font-family:'Times New Roman';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" x="0" y="0">15</tspan></text>
+    </g>
+    <path id="path42" d="m 280,-57 h -5 c -3.33334,0 -5,3.333332 -5,10 V 53 c 0,6.666668 -1.66666,10 -5,10 h -2.5 c -1.66666,0 -0.83334,0 2.5,0 h 2.5 c 1.66666,0 2.5,3.333336 2.5,10 v 100 c 0,6.66667 1.66666,10 5,10 h 5" style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0,0.88162876,0.88162876,0,182.96233,-192.1624)" />
+    <path id="path43" d="m 520,-57 h -5 c -3.33334,0 -5,3.333332 -5,10 V 53 c 0,6.666668 -1.66666,10 -5,10 h -2.5 c -1.66666,0 -0.83334,0 2.5,0 h 2.5 c 1.66666,0 2.5,3.333336 2.5,10 v 100 c 0,6.66667 1.66666,10 5,10 h 5" style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0,0.88162876,0.88162876,0,394.55323,-403.7533)" />
+    <path id="path44" d="m 660,43 h -5 c -3.33331,0 -5,3.333332 -5,10 v 5 c 0,3.333332 -1.66669,5 -5,5 h -2.5 c -1.66669,0 -0.83331,0 2.5,0 h 2.5 c 1.66669,0 2.5,3.333336 2.5,10 v 5 c 0,3.333336 1.66669,5 5,5 h 5" style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0,0.88162876,0.88162876,0,517.98127,-527.18131)" />
+    <path id="path45" d="m 100,3 h -5 c -3.333336,0 -5,3.333333 -5,10 v 40 c 0,6.666668 -1.666664,10 -5,10 h -2.5 c -1.666664,0 -0.833336,0 2.5,0 h 2.5 c 1.666664,0 2.5,3.333336 2.5,10 v 40 c 0,6.66666 1.666664,10 5,10 h 5" style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" transform="matrix(0,0.88162876,0.88162876,0,24.269176,-33.469222)" />
+  </g>
+</svg>

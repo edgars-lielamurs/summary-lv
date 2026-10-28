@@ -1,0 +1,27 @@
+Savstarpēji savienoti \Gls{lif} neironi digitālā arhitektūrā ir plaši izmantota izvēle liela mēroga \Gls{snn} ar efektīvu
+resursu patēriņu, tomēr sarežģītākas impulsu ģenerēšanas dinamikas izpētei sistēmai nepieciešams augstāks bioloģiskās
+līdzības līmenis. Lai precīzāk atdarinātu neirona uzvedību, parasti izvēlas reālistiskākus modeļus, kas spēj radīt dažādus
+pulsēšanas režīmus, piemēram, Ižikeviča modeli \cite{Izhikevich2003}, taču tas palielina skaitļošanas sarežģītību.
+
+Ižikeviča neirona modelī \cite{Izhikevich2003} Hodžkina–Hakslija neirona modelis \cite{hodgkin1952} reducēts līdz šādai
+parasto diferenciālvienādojumu sistēmai:
+\begin{equation}
+\begin{cases}
+  \label{eq:izhi}
+  v' = 0{,}04v^{2} + 5v + 140 - u + I \\
+  u' = a(bv - u),
+\end{cases}
+\end{equation}
+kur \(v\) apzīmē membrānas potenciālu, \(u\) ir membrānas atjaunošanās mainīgais, \(a\) nosaka atjaunošanās mainīgā laika
+mērogu un \(b\) raksturo jutību pret zemsliekšņa svārstībām.
+
+Kad impulss sasniedz potenciāla slieksni, sistēma tiek atiestatīta uz pēcimpulsa stāvokli:
+\begin{equation}
+  \label{eq:postspike}
+  v \geq V_{th} \text{, tad } \{v = c, u = u + d\},
+\end{equation}
+kur parametri \(c\) un \(d\) raksturo membrānas potenciāla un atjaunošanās mainīgā pēcimpulsa atiestatīšanas vērtības.
+Pretstatā bioloģiski nereālistiski vienkāršajam \Gls{lif} modelim šis modelis spēj atveidot smadzeņu garozas neironiem raksturīgo atsevišķu
+impulsu un impulsu kopu dinamiku.
+
+

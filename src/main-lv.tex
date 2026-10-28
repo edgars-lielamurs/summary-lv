@@ -1,0 +1,125 @@
+\documentclass[a4paper, 12pt]{article}
+
+\input{packages.tex}
+\input{commands.tex}
+\input{colors.tex}
+\input{format.tex}
+\input{src/lv/format-lv.tex}
+\input{src/lv/abbreviations.tex}
+
+
+\setauthor{Edgars Lielāmurs}
+\setemail{name.surname@edi.lv}
+
+\settitle{Neiromorfo skaitļošanas sistēmu izstrāde, izmantojot programmējamus loģikas masīvus}
+\setcity{Rīga}
+\setdate{2026}{01}{01}
+
+\setuniversity{Rīgas Tehniskā universitāte}
+\setfaculty{Datorzinātnes, informācijas tehnoloģijas un enerģētikas fakultāte}
+\setinstitute{Mikroviļņu inženierijas un elektronikas institūts}
+\setprogram{Elektronika}
+
+\addsupervisor{Artūrs Āboltiņš}{Dr.sc.Ing.}{vadošais pētnieks}
+\addsupervisor{Roberts Kadiķis}{Dr.sc.Ing.}{vadošais pētnieks}
+
+
+\begin{document}
+
+\input{src/lv/summary/titlepage.tex}
+\setcounter{page}{2}
+
+\input{src/lv/summary/publication.tex}
+
+
+\nonenumeratedsection{ANOTĀCIJA}
+\input{src/lv/abstract.tex}
+
+
+\cleardoublepage
+\addcontentsline{toc}{section}{SAĪSINĀJUMI}
+\printglossary[type=\acronymtype, title=SAĪSINĀJUMI]
+
+\tableofcontents
+\clearpage
+
+\section{Ievads}
+\input{src/lv/0_introduction.tex}
+
+\section{Teorētiskais pamatojums}
+  \subsection{Neiromorfā skaitļošana} % 1.1
+
+    \subsubsection{Impulsu neironu modeļi} % 1.1.1
+      \paragraph{Integrējošā neirona modelis ar noplūdi}\mbox{} \\
+      \input{src/lv/summary/excerpts/1.1.1.2_section.tex}
+      \paragraph{Ižikeviča modelis}\mbox{} \\
+      \input{src/lv/1.1.2.3_section.tex}
+
+    \subsubsection{Impulsu neironu tīkla arhitektūra} % 1.1.3
+      \paragraph{Konvolūcijas slāņi}\mbox{} \\
+      \input{src/lv/1.1.3.2_section.tex}
+  \subsection{Uz FPGA balstīta neiromorfā skaitļošana}
+    \subsubsection{Uz FPGA balstīti neironu modeļi}
+      \paragraph{Integrējošā neirona modelis ar noplūdi}\mbox{} \\
+      \input{src/lv/2.2.1_section.tex}
+\section{Realizācijas metodoloģija} \label{sec:impl}
+\input{src/lv/3.0_section.tex}
+\subsection{Uz PCIe balstīts FPGA paātrinātājs pārkonfigurējamiem konvolucionāliem impulsu neironu tīkliem} \label{sec:fpga_impl} % 3.1
+  \input{src/lv/3.1.0_section.tex}
+  \subsubsection{Paātrinātāja sistēmas vispārējā koncepcija} % 3.1.1
+  \input{src/lv/3.1.1_section.tex}
+  \subsubsection{Impulsu kodēšanas realizācija}
+  \input{src/lv/summary/excerpts/3.1_section.tex}
+  \subsubsection{Uz notikumiem balstītas konvolūcijas realizācija}
+  \input{src/lv/3.1.2_section.tex}
+  \subsubsection{Integrējošā neirona ar noplūdi realizācija}
+  \input{src/lv/3.3_section.tex}
+  % \subsubsection{Ižikeviča impulsu neirona realizācija}
+  % \input{src/lv/3.1.4_section.tex}
+  \subsubsection{SNN kvantēšana realizācijai aparatūrā}
+  \input{src/lv/3.1.5_section.tex}
+\subsection{Telpiski temporāla objektu detektēšana ar dziļiem impulsu CNN, izmantojot punktu mākoņu datus}
+  \input{src/lv/3.2_section.tex}
+  \subsubsection{Vokseļu režģa priekšapstrāde}
+  \input{src/lv/3.2.1_section.tex}
+  \subsubsection{Impulsu konvolūcijas slāņi}
+  \input{src/lv/3.2.2_section.tex}
+  \subsubsection{Detektēšana un klasifikācija}
+  \input{src/lv/3.2.3_section.tex}
+
+\section{Eksperimentālie rezultāti}
+\input{src/lv/4.0_section.tex}
+\subsection{Veiktspējas novērtēšanas metrikas}
+\input{src/lv/4.1.0_section.tex}
+\subsection{Salīdzinoša veiktspējas analīze}
+  \subsubsection{Uz PCIe balstīts FPGA paātrinātājs pārkonfigurējamiem konvolucionāliem impulsu neironu tīkliem}
+    \paragraph{Eksperimentu konfigurācija}\mbox{} \\
+    \input{src/lv/4.1.1.1_section.tex}
+    \paragraph{Salīdzinoša veiktspējas analīze}\mbox{} \\
+  \input{src/lv/summary/excerpts/4.1.1_section.tex}
+  \subsubsection{Telpiski temporāla objektu detektēšana ar dziļiem impulsu CNN, izmantojot LiDAR datus}
+    \paragraph{Eksperimentu konfigurācija}\mbox{} \\
+    \input{src/lv/4.2.2.1_section.tex}
+    \paragraph{Salīdzinoša veiktspējas analīze}\mbox{} \\
+  \input{src/lv/summary/excerpts/4.1.2_section.tex}
+  \subsubsection{Telpiski temporāla objektu detektēšana ar dziļiem impulsu CNN, izmantojot lidojuma laika datus}
+    \paragraph{Eksperimentu konfigurācija}\mbox{} \\
+    \input{src/lv/summary/excerpts/4.1.3.1_section.tex}
+    \paragraph{Salīdzinoša veiktspējas analīze}\mbox{} \\
+    \input{src/lv/summary/excerpts/4.1.3_section.tex}
+    \paragraph{Realizācija FPGA}\mbox{} \\
+    \input{src/lv/summary/excerpts/4.1.4_section.tex}
+
+
+
+\section{Secinājumi un turpmākais darbs}
+\subsection{Secinājumi}
+\input{src/lv/5.0_section.tex}
+\subsection{Turpmākais darbs}
+\input{src/lv/5.1_section.tex}
+
+
+\printbibliography[heading=bibintoc,title={LITERATŪRAS SARAKSTS}]
+
+
+\end{document}

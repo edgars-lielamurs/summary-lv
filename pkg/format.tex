@@ -1,0 +1,234 @@
+%================= Input languages ==============================
+\setdefaultlanguage{english}
+\setotherlanguage{latvian}
+\setotherlanguages{russian}
+
+%================= Resetting numbering in sections ==============================
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+%================= Bibliography ==============================
+\usepackage[
+  style=nature,
+  backend=biber,
+  giveninits=true,
+  doi=false,
+  isbn=false,
+  url=false,
+  eprint=false
+]
+{biblatex}
+\addbibresource{src/bib.bib}
+
+
+\DeclareNameAlias{default}{family-given}
+\DeclareFieldFormat[book, inbook, patent, thesis, unpublished]
+{title}{#1.\isdot}
+\DeclareFieldFormat[article, incollection, inproceedings, journal]
+{title}{#1\isdot}
+\DeclareFieldFormat[article, book, inbook,incollection,inproceedings,patent,thesis,unpublished]
+{number}{ - Nr.#1.}
+\DeclareFieldFormat[article, book, inbook,incollection,inproceedings,patent,thesis,unpublished]
+{volume}{- Vol.#1}
+\DeclareFieldFormat[article, book, inbook,incollection,inproceedings,patent,thesis,unpublished]
+{date}{#1.\isdot}
+\DeclareFieldFormat[article, book, inbook,incollection,inproceedings,patent,thesis,unpublished]
+{pages}{- #1 p.}
+\DeclareFieldFormat[online]
+{title}{#1}
+\DeclareFieldFormat[online]
+{date}{ - #1.}
+\DeclareFieldFormat[inproceedings]
+{booktitle}{\emph{#1.}}
+
+\DeclareFieldFormat{url}{ / \mkbibacro{URL}\space-\space\url{#1}}
+
+
+\renewcommand*{\newunitpunct}{\addspace}
+\renewcommand*{\bibpagespunct}{\addspace}
+
+\renewbibmacro{in:}{//}
+%\renewbibmacro{URL:}{//}
+
+
+\renewbibmacro*{publisher+location+date}{%
+    { -}
+    \printlist{location}%
+    \iflistundef{publisher}
+    {\iflistundef{organization}
+        {\setunit*{\addcomma\space}}
+        {\setunit*{\addcolon\space}}}
+    {\setunit*{\addcolon\space}}%
+    \printlist{publisher}%
+    \setunit*{\addcomma\space}%
+    \usebibmacro{date}%
+    \newunit}
+
+
+\renewbibmacro*{organization+location+date}{%
+    { -}
+    \printlist{location}%
+    \iflistundef{publisher}
+    {\setunit*{\addcomma\space}}
+    {\setunit*{\addcolon\space}}%
+    \printlist{publisher}%
+    \setunit*{\addcomma\space}%
+    \usebibmacro{date}%
+    \newunit}
+
+
+\renewbibmacro*{journal+issuetitle}{%
+    \usebibmacro{journal}%
+    \setunit*{. \addspace - \addspace}%
+    \iffieldundef{series}
+    {}
+    {\newunit
+        \printfield{series}%
+        \setunit{\addspace}}%
+    \usebibmacro{issue+date}%
+    \setunit{\space}%
+    \usebibmacro{volume+number+eid}%
+    \setunit{\addcolon\space}%
+    \usebibmacro{issue}%
+    \newunit}
+
+
+%% =========== RTU summary formatting (README.md) ==================
+\geometry{a4paper,margin=2.5cm,headheight=0pt,headsep=0pt,footskip=1.25cm}
+\pagestyle{plain}
+\titleformat{\section}
+  {\normalfont\setstretch{1}\hyphenpenalty=10000\fontsize{16}{19}\selectfont\bfseries\filcenter}
+  {\thesection.}{0.5em}{\MakeUppercase}
+\titleformat{\subsection}
+  {\normalfont\setstretch{1}\hyphenpenalty=10000\fontsize{14}{17}\selectfont\bfseries\filcenter}
+  {\thesubsection}{0.5em}{}
+% \titleformat{\subsubsection}
+%   {\normalfont\setstretch{1}\hyphenpenalty=10000\fontsize{12}{15}\selectfont\bfseries}
+%   {}{0pt}{}
+\titleformat{\subsubsection}
+    {\fontsize{13}{16}\bfseries}
+    {\thesubsubsection}
+    {2mm}
+    {}
+\titleformat{\paragraph}[runin]
+    {\fontsize{12}{15}\bfseries}
+    {\theparagraph}
+    {2mm}
+    {}
+\newcommand{\sectionbreak}{\clearpage\suppressfloats[t]}
+\titlespacing{\section}{0pt}{18pt}{12pt}
+\titlespacing{\subsection}{0pt}{18pt}{12pt}
+\titlespacing{\subsubsection}{0pt}{18pt}{12pt}
+\setlength{\parindent}{0.63cm}
+\setlength{\parskip}{0pt}
+\AtBeginDocument{\setstretch{1.2}}
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{2}
+\captionsetup{font=normalsize,labelfont=normalfont,textfont=normalfont}
+\captionsetup[figure]{justification=centering,labelsep=period,skip=6pt,belowskip=12pt}
+% RTU: table number on a separate right-aligned line; centered title below.
+\DeclareCaptionFormat{rtutable}{\hfill#1\par\vspace{6pt}\centering#3\par}
+\captionsetup[table]{format=rtutable,labelsep=none,singlelinecheck=false,skip=6pt,position=above}
+\setlength{\emergencystretch}{2em}
+
+% Original dissertation formatting retained below for reversibility.
+% %% =========== Page =============================
+% % Top and left side - 3cm, bottom and right side - 2cm
+% \setlength{\textheight}{235mm}
+% \setlength{\textwidth}{160mm}
+% \setlength{\headheight}{3mm}    % height of header
+% \setlength{\headsep}{1mm}       % space between header and text
+% \setlength{\topmargin}{1mm}     % space between page top and header
+% \setlength{\oddsidemargin}{5mm}
+% \setlength{\abovecaptionskip}{2pt plus 1pt minus 1pt}
+%
+%
+% %%============== Sections ============================
+% \titleformat{\section}
+%     {\newpage\fontsize{14}{17}\bfseries\filcenter\fontsize{12}{15}}
+%     {\thesection.}  % the '.' indicates a dot after section number
+%     {2mm}   % space between number and title
+%     {\MakeUppercase}        %  Komanda/teksts starp numuru un virsrakstu
+%
+% \titleformat{\subsection}
+%     {\fontsize{14}{17}\bfseries\filcenter}
+%     {\thesubsection}
+%     {2mm}
+%     {\capitalisewords}
+%
+% \titleformat{\subsubsection}
+%     {\fontsize{13}{16}\bfseries}
+%     {\thesubsubsection}
+%     {2mm}
+%     {\capitalisewords}
+%
+% \titleformat{\paragraph}[runin]
+%     {\fontsize{12}{15}\bfseries}
+%     {\theparagraph}
+%     {2mm}
+%     {\capitalisewords}
+%
+% \setcounter{secnumdepth}{2}
+%
+% \titlespacing{\section}{0pt}{6mm}{4mm} % spacing before and after section titles
+% \titlespacing{\subsection}{0pt}{6mm}{4mm}
+% \titlespacing{\subsubsection}{0pt}{6mm}{4mm}
+%
+% \setlength{\parindent}{1cm}
+%
+% \AtBeginDocument{ % Line spacing
+%   \setstretch{1.1}
+% }
+%
+% %%============== Tables and figures ==========================
+% \usepackage[labelsep=period]{caption}
+% \DeclareCaptionFormat{hfillstart}{\hfill#1#2#3\par}
+% \DeclareCaptionFont{mdit}{\mdseries\itshape}
+% \captionsetup[table]{
+%   justification=centering,
+% }
+%
+%
+% %%============== Table of contents ============================
+% \titlecontents{section}
+%    [0.5em]              % left side margin
+%    {\vspace{0.5em}}     % teksta un numuru formatesana % or you like 1em?
+%    {\hspace{-1em}.\contentslabel{0.7em}\hspace{0.7em}}%  numuru formatesana
+%    {\hspace*{-1.5em}}   % formatesana kad nav numura
+%    {\titlerule*[1pc]{.}\contentspage}% lapuses numeracija
+%
+% \titlecontents{subsection}
+%    [2.3em]
+%    {}
+%    {\hspace{0em}\contentslabel{1.5em}\hspace{0.7em}}
+%    {}
+%    {\titlerule*[1pc]{.}\contentspage}
+%
+%
+
+%%============== Counters ============================
+\newtotcounter{citenum}
+\AtEveryBibitem{\stepcounter{citenum}}
+\newtotcounter{appendix}
+
+
+%%============== Item lists ============================
+\setitemize{itemsep=-2pt}
+
+
+%%============== URL configuration ============================
+% https://www.overleaf.com/learn/latex/hyperlinks
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    filecolor=black,
+    urlcolor=blue,
+}
+
+%%============== Adding paragraph counter (subsubsubsection) ============================
+% \setcounter{tocdepth}{2}
+% \setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}

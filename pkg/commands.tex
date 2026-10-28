@@ -1,0 +1,66 @@
+\makeatletter
+
+% Store author '\@author'
+\newcommand{\setauthor}[1]{\def \@author {#1}}
+
+% Store title '\@title'
+\newcommand{\settitle}[1]{\def \@title {#1}}
+
+% Store email '\@email'
+\newcommand{\setemail}[1]{\def \@email {#1}}
+
+% Store university '\@university'
+\newcommand{\setuniversity}[1]{\def \@university {#1}}
+
+% Store faculty '\@faculty'
+\newcommand{\setfaculty}[1]{\def \@faculty {#1}}
+
+% Store institute '\@institute'
+\newcommand{\setinstitute}[1]{\def \@institute {#1}}
+
+% Store program '\@program'
+\newcommand{\setprogram}[1]{\def \@program {#1}}
+
+% Store city '\@city'
+\newcommand{\setcity}[1]{\def \@city {#1}}
+
+% Store date
+\newcommand{\setdate}[3]{
+  \def \@year{#1}
+  \def \@month{#1}
+  \def \@day{#1}
+}
+
+
+% Store supervisor metadata in arrays: '\@SupervisorNames', '\@SupervisorDegrees', '\@SupervisorPositions'
+\newcounter{SupervisorCounter}
+\newcommand{\addsupervisor}[3]{%
+  \stepcounter{SupervisorCounter}%
+  \csdef{SupervisorNames\csuse{theSupervisorCounter}}{#1}%
+  \csdef{SupervisorDegrees\csuse{theSupervisorCounter}}{#2}%
+  \csdef{SupervisorPositions\csuse{theSupervisorCounter}}{#3}%
+}
+
+\newcommand\getSupervisorName[1]{
+  \csuse{SupervisorNames#1}%
+}
+\newcommand\getSupervisorDegree[1]{
+  \csuse{SupervisorDegrees#1}%
+ }
+\newcommand\getSupervisorPosition[1]{
+  \csuse{SupervisorPositions#1}%
+ }
+
+% nonenumerated section
+\newcommand{\nonenumeratedsection}[1]{
+  \section*{#1}
+  \addcontentsline{toc}{section}{#1}
+}
+
+% Autosized floor brackets
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% Editing
+\newcommand{\comment}[1]{\textcolor{violet}{#1}}
+
+\makeatother

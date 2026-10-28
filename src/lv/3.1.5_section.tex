@@ -1,0 +1,20 @@
+
+
+Dziļie konvolucionālie \Gls{snn} modeļi bieži satur lielu parametru skaitu, kas ievērojami palielina nepieciešamos skaitļošanas resursus. Izmantojot
+kvantēšanas metodes, parametru reprezentāciju parasti var būtiski samazināt no 32 bitu peldošā punkta līdz maza bitu platuma
+reprezentācijai (piemēram, 4 vai 8 bitiem), būtiski nesamazinot veiktspēju \cite{wei2024}. Lai taupītu atmiņu un skaitļošanas
+resursus, konvolūcijas kodolu svariem un nobīdēm piemēro kvantēšanu, kas samazina bitu platumu tā, lai šis samazinājums
+būtiski neietekmētu veiktspēju. Tas ir īpaši svarīgi, realizējot \Gls{snn} \Gls{fpga} paātrinātājos un glabāšanai izmantojot
+\Gls{ocm}.
+
+Divas bieži izmantotas metodes ir \Gls{ptq} un \Gls{qat}. Izmantojot \Gls{ptq}, tīklu vispirms apmāca ar tradicionāliem
+peldošā punkta parametriem un pēc tam apmācītos svarus pārveido zemākas precizitātes reprezentācijā \cite{zhou2016}. Šī pieeja neprasa izmaiņas apmācības procesā un ļauj novērtēt dažādas kvantēšanas precizitātes uzreiz pēc modeļa apmācības. Tomēr kvantēšana ar mazu bitu skaitu var izraisīt precizitātes samazinājumu, ko pēc apmācības vairs nevar uzlabot. Savukārt \Gls{qat} gadījumā kvantēšanas ietekme tiek iekļauta apmācībā, ļaujot svariem pielāgoties kvantēšanas kļūdai un uzlabot precizitāti pie maza bitu platuma \cite{zhou2016, plagwitz2024}. Tomēr \Gls{qat} lielākā apmācības sarežģītība padara \Gls{ptq} vēlamāku, ja aparatūras realizācijas novērtē vairākos precizitātes līmeņos.
+
+Reāli peldošā punkta skaitļi tiek kvantēti uz $k$ bitu reprezentāciju \cite{zhou2016}:
+
+\begin{equation}
+  Q(w) =  \frac{1}{2^{k - 1}} clip(\lfloor w \cdot 2^{k}-1 \rceil, 0, 2^{k}-1)
+\end{equation}
+kur \(\lfloor \cdot \rceil\) apzīmē noapaļošanas operāciju. Ieeja diapazonā \(w \in [0, 1]\) tiks kvantēta uz tuvāko \(i / (2^{k} - 1)\), kur \(i = 0, 1, ..., (2^{k} - 1)\).
+
+

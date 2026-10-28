@@ -1,0 +1,146 @@
+\Gls{snn} paātrinātāja, kas ietver gan programmatūras, gen aparatūras koponentes, jānovērtē gan algoritmiskā, gan aparatūras
+līmenī. Algoritmiskais novērtējums aplūko tīkla precizitāti un kvantēšanas ietekmi uz to, savukārt aparatūras novērtējums
+koncentrējas uz latentumu, caurlaidību, energoefektivitāti un \Gls{fpga} resursu izmantojumu. Šīs metrikas raksturo
+kompromisu starp atpazīšanas veiktspēju un aparatūras realizācijas efektivitāti.
+
+% Klasifikācijas veiktspēju novērtē ar F1 rādītāju, kas vienā metrikā apvieno precizitāti un pilnīgumu un ir piemērots datu kopām ar klašu nelīdzsvarotību. Precizitāte raksturo pareizi klasificēto paraugu īpatsvaru starp paraugiem, kas prognozēti kā pozitīvi, savukārt pilnīgums raksturo pareizi identificēto paraugu īpatsvaru starp faktiski pozitīvajiem paraugiem. Dotai klasei precizitāti \(P\) un pilnīgumu \(R\) definē šādi \cite{goodfellow-2016}:
+% \begin{equation}
+%     P = \frac{TP}{TP + FP}, R = \frac{TP}{TP + FN},
+% \end{equation}
+% kur \(TP\), \(FP\) un \(FN\) ir attiecīgi patiesi pozitīvo, aplami pozitīvo un aplami negatīvo prognožu skaits. F1 rādītāju aprēķina šādi \cite{goodfellow-2016}:
+% \begin{equation}
+%     F_1 = \frac{2PR}{P+R}.
+% \end{equation}
+% Vairāku klašu klasifikācijas uzdevumos metrikas var aprēķināt katrai klasei atsevišķi un vidējot.
+
+Objektu detektēšanas uzdevumos veiktspēju novērtē ar \Gls{ap}, kas raksturo precizitātes un pilnīguma sakarību pie dažādiem
+detektēšanas sliekšņiem. Prognozētu ietverošo taisnstūri uzskata par patiesi pozitīvu, ja tas atbilst marķējuma
+objektam, pamatojoties uz \Gls{iou}. Tad vidējo precizitāti var izteikt kā laukumu zem precizitātes un pilnīguma līknes
+\cite{goodfellow-2016}:
+\begin{equation}
+    AP = \int_0^1 P_{\mathrm{interp}}(r)\,dr,
+\end{equation}
+kur \(P_{\mathrm{interp}}(r)\) ir interpolētā precizitāte pie pilnīguma līmeņa \(r\). Novērtējot vairākas objektu klases, klašu vidējo precizitāti aprēķina kā klašu \Gls{ap} vidējo vērtību.
+
+Inferences latentums definēts kā laiks no ieejas parauga nodošanas paātrinātājam līdz izejas saņemšanai:
+\begin{equation}
+    t_{\mathrm{lat}} = t_{\mathrm{out}} - t_{\mathrm{in}},
+\end{equation}
+kur \(t_{\mathrm{in}}\) un \(t_{\mathrm{out}}\) ir attiecīgi ieejas un izejas laika zīmogi. Norādītais latentums ietver
+kopējo aparatūras izpildes laiku un visas resursdatora un ierīces saziņas aiztures.
+% Apstrādes caurlaidība ir sekundē
+% apstrādāto paraugu skaits, ko pietiekami lielam iterāciju skaitam var aproksimēt ar \(FPS \approx 1 / t_{\mathrm{lat}}\).
+
+Piedāvāto arhitektūru energoefektivitāti novērtē, izmantojot gan izmērīto \Gls{fpga} jaudas patēriņu, gan vienas inferences
+enerģijas analītiskus novērtējumus. Tie sniedz savstarpēji papildinošu informāciju. Jaudas mērījumi raksturo realizēto
+aparatūru, bet analītiskie modeļi novērtē aritmētisko operāciju un atmiņas piekļuves enerģiju. Vienai inferencei nepieciešamo
+enerģiju iegūst kā
+\begin{equation}
+    E_{\mathrm{inf}} = P_{\mathrm{avg}}\, t_{\mathrm{lat}},
+\end{equation}
+kur \(P_{\mathrm{avg}}\) ir vidējais jaudas patēriņš inferences laikā. Analītiskajos novērtējumos atsevišķi nodala sinaptisko
+operāciju, neironu stāvokļu atjaunināšanas un atmiņas piekļuves ieguldījumu, savukārt izmērītās vērtības ietver \Gls{fpga}
+statisko jaudu un saziņas papildu patēriņu.
+
+Ekvivalentu tradicionālo \Gls{cnn} ar \(N_{FOp}\) peldošā punkta operācijām patērēto enerģiju var novērtēt šādi \cite{dampfhoffer2022}:
+\begin{equation}
+\begin{split}
+  E_{ANN} = & N_{FPOp} \times E_{MAC} \\
+            & + N_{MemOp} \times (E_{rdWeights} + E_{rdAct} + E_{wrAct}),
+\end{split}
+\label{eq:eann}
+\end{equation}
+kur \(E_{rdWeights}\), \(E_{rdAct}\), \(E_{wrAct}\) un \(E_{MAC}\) apzīmē attiecīgi svaru lasīšanas, aktivāciju lasīšanas, aktivāciju rakstīšanas un \Gls{mac} operācijās patērēto enerģiju. \(N_{FPOp}\) ir sinaptisko operāciju skaits, un \(N_{MemOp}\) ir atmiņas piekļuves operāciju skaits.
+
+Var aplūkot vienas inferences laikā veikto aritmētisko operāciju skaitu. Konvolūcijas slāņiem \(f_{\mathrm{in}}\) apzīmē neirona ieeju skaitu, kas vienāds ar kodola izmēra un ieejas kanālu skaita reizinājumu:
+\begin{equation}
+  f_{\mathrm{in}} = K^2 C_{\mathrm{in}}.
+\end{equation}
+Tradicionālajos \Gls{ann} katram sinaptiskajam savienojumam nepieciešama viena reizināšana un viena saskaitīšana. Kopējais
+peldošā punkta operāciju skaits vienā inferencē ir \cite{rueckauer2017}
+\begin{equation}
+  N_{\mathrm{FPOp}} =
+  \sum_{l=1}^{L}
+  (2f_{\mathrm{in},l}+1)N_l,
+\end{equation}
+kur \(N_l\) ir neironu skaits slānī \(l\), un papildu loceklis ņem vērā nobīdes pieskaitīšanu. Pilnībā savienotam slānim \(f_{\mathrm{in}}\) ir iepriekšējā slāņa neironu skaits. Kopējais izejas neironu skaits slānī \(l\) ir
+\begin{equation}
+    N_l = H_l \times W_l \times C_{\mathrm{out},l},
+\end{equation}
+kur \(H_l\), \(W_l\) un \(C_{\mathrm{out},l}\) ir attiecīgi izejas pazīmju kartes augstums, platums un kanālu skaits.
+
+Atbilstoši darba \cite{horowitz2014} metodoloģijai atmiņas piekļuves un aritmētisko operāciju enerģijas tiek aproksimētas ar
+mūsdienu \Gls{cmos} tehnoloģijām raksturīgām vērtībām. Tā kā pieņemts, ka svari un aktivācijas tiek glabāti ārējā SDRAM,
+vienas atmiņas piekļuves enerģija pieņemta kā \(E_{rdWeight}=E_{rdAct}=E_{wrAct}=1300\,\mathrm{pJ}\). Tāpat pieņemts, ka 32
+bitu peldošā punkta reizināšanas un uzkrāšanas operācijas enerģija ir \(E_{MAC}=4{,}6\,\mathrm{pJ}\). Šīs vērtības nodrošina no tehnoloģijas neatkarīgu analītisku enerģijas novērtējumu un tiek izmantotas līdzvērtīgai \Gls{ann} un \Gls{snn} inferences algoritmisko enerģijas prasību salīdzināšanai.
+
+\Gls{lif} neironu konvolūcijas slānim, kas aprakstīts vienādojumos (\ref{eq:lif_conv}) un (\ref{eq:lif_v}), enerģiju novērtē šādi \cite{dampfhoffer2022}:
+\begin{equation}
+\begin{split}
+  E_{SNN} = & N_{SynOp} \times (E_{rdWeights} + E_{ACC}) \\
+            & + N_{Neurons} \times T \times (E_{rdState} + E_{wrState} + E_{ACC}),
+\end{split}
+\label{eq:esnn}
+\end{equation}
+kur \(N_{SynOp}\) apzīmē sinaptisko operāciju skaitu, bet locekļi \(E_{rdState}\), \(E_{wrState}\) atbilst enerģijai, kas patērēta attiecīgi sinaptisko svaru lasīšanai, neironu stāvokļu lasīšanai un atjaunināto neironu stāvokļu rakstīšanai. \(E_{ACC}\) apzīmē \Gls{acc} operāciju enerģiju, summējot ieejas bez reizināšanas. \(N_{Neurons}\) ir kopējais neironu skaits tīklā, un \(T\) ir laika soļu skaits.
+
+\Gls{snn} sinaptiskie aprēķini tiek veikti tikai tad, kad rodas impulsi. Kopējais sinaptiskās uzkrāšanas operāciju skaits inferencē ar \(T\) laika soļiem ir \cite{rueckauer2017}
+\begin{equation}
+  N_{\mathrm{SynOp}} =
+  \sum_{t=1}^{T}
+  \sum_{l=1}^{L}
+  f_{\mathrm{in},l}\,
+  N_{active,l}[t],
+\end{equation}
+kur \(N_{active,l}[t]\) ir neironu skaits, kuru membrānas stāvoklis tiek atjaunināts slānī \(l\) laika solī \(t\), un \(f_{\mathrm{in},l}\) ir katra neirona ieeju skaits.
+
+\Gls{fpga} arhitektūrā konvolūcijas svari tiek glabāti mikroshēmas iekšējā \Gls{bram}, kas modelēta ar SRAM piekļuves
+enerģiju \(E_{rdWeight}=10\,\mathrm{pJ}\), savukārt neironu membrānas stāvokļi tiek glabāti ārējā SDRAM, iegūstot
+\(E_{rdState}=E_{wrState}=1300\,\mathrm{pJ}\). Impulsu notikumu uzkrāšana aizstāj peldošā punkta \Gls{mac} operācijas, tādēļ atbilstoši darbam \cite{horowitz2014} pieņemta akumulatora enerģija \(E_{ACC}=0{,}9\,\mathrm{pJ}\).
+
+Lai salīdzinātu \Gls{snn} enerģijas patēriņu ar ekvivalentu \Gls{ann} realizāciju, relatīvo inferences enerģijas samazinājumu aprēķina šādi:
+\begin{equation}
+    R = 1-\frac{E_{\mathrm{SNN}}}{E_{\mathrm{ANN}}}.
+\end{equation}
+
+\Gls{snn} aktivāciju retinājumu novērtē, lai raksturotu aktīvo neironu izeju īpatsvaru. Impulsu slānim \(l\) retinājumu definē šādi \cite{Zhou2020}:
+\begin{equation}
+  S_l = \frac{1}{T N_l}
+    \sum_{t=0}^{T-1}
+    \sum_{i=1}^{N_l}
+    S_{l,i}[t]
+    \label{eq:layer_sparsity}
+\end{equation}
+kur \(T\) ir simulācijas laika soļu skaits, \(N_l\) ir neironu skaits slānī \(l\) un \(S_{l,i}[t] \in \{0,1\}\) ir slāņa \(l\) neirona \(i\) izejas impulss laika solī \(t\).
+
+Kopējo tīkla retinājumu aprēķina, summējot aktīvos impulsu notikumus visos \(L\) impulsu slāņos:
+\begin{equation}
+    S_{\mathrm{net}} =
+    \frac{
+    \displaystyle
+    \sum_{l=1}^{L}
+    \sum_{t=0}^{T-1}
+    \sum_{i=1}^{N_l}
+    S_{l,i}[t]
+    }{
+    \displaystyle T \sum_{l=1}^{L} N_l
+    }.
+    \label{eq:network_sparsity}
+\end{equation}
+
+Visbeidzot realizācijas efektivitāti raksturo \Gls{fpga} resursu izmantojums, tostarp \Gls{lut}, \Gls{ff}, \Gls{bram} un
+\Gls{dsp} bloki, kā arī maksimālā sasniedzamā takts frekvence \(f_{\max}\). Šīs metrikas norāda uz piedāvātās arhitektūras
+mērogojamību un nosaka lielāku impulsu neironu tīklu realizācijai pieejamos resursus.
+% Maksimālo darbības frekvenci nosaka pēc
+% izvietošanas un trasēšanas laika parametru analīzes. \(T_{\mathrm{target}}\) apzīmē mērķa takts periodu un \(\mathrm{WNS}\)
+% — sliktāko negatīvo laika rezervi, kas noteikta pēc realizācijas. Minimālais iespējamais takts periods ir
+% \begin{equation}
+%   T_{\min} = T_{\mathrm{target}}-\mathrm{WNS},
+% \end{equation}
+% kur negatīvs \(\mathrm{WNS}\) norāda uz laika ierobežojumu pārkāpumu. Tātad maksimālā darbības frekvence ir
+% \begin{equation}
+%   f_{\max} = \frac{1}{T_{\min}}
+%   =\frac{1}{T_{\mathrm{target}}-\mathrm{WNS}}.
+% \end{equation}
+
+
