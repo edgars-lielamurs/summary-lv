@@ -11,8 +11,8 @@ Arhitektūra ir konfigurējama pazīmju kartēm līdz \(512 \times 512\) pikseļ
   \includegraphics[width=0.9\textwidth]{fig/fpga_vs_jetson.png}
   \caption{\Gls{fpga} \Gls{snn} izpildes laiks salīdzinājumā ar ekvivalentu modeli GPU.}
   \label{fig:fpga_vs_jetson}
-\par\smallskip
-{\footnotesize \textit{Execution time by layer and device} — izpildes laiks pēc slāņu skaita un ierīces; \textit{Layers} — slāņi; \textit{Execution time} — izpildes laiks; \textit{Device} — ierīce; \textit{Sync to device} — sinhronizācija uz ierīci; \textit{Processing} — apstrāde; \textit{Sync from device} — sinhronizācija no ierīces; \textit{Total} — kopā; \textit{Task} — uzdevums.\par}
+% \par\smallskip
+% {\footnotesize \textit{Execution time by layer and device} — izpildes laiks pēc slāņu skaita un ierīces; \textit{Layers} — slāņi; \textit{Execution time} — izpildes laiks; \textit{Device} — ierīce; \textit{Sync to device} — sinhronizācija uz ierīci; \textit{Processing} — apstrāde; \textit{Sync from device} — sinhronizācija no ierīces; \textit{Total} — kopā; \textit{Task} — uzdevums.\par}
 \end{figure}
 
 Sekliem tīkliem abu platformu veiktspēja ir salīdzināma. Tomēr, palielinoties tīkla dziļumam, \Gls{fpga} konveijers tiek pilnībā noslogots un pārspēj GPU realizāciju. Novērtētajam četrslāņu tīklam kopējais inferences latentums saglabājas zem \qty{60}{\milli\second}, atbilstot reāllaika apstrādes prasībām automobiļu uztveres sistēmās.

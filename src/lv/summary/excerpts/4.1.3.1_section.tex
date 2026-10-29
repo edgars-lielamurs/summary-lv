@@ -1,9 +1,10 @@
-Šajā apakšnodaļā sniegta uz \Gls{snn} balstītas objektu atpazīšanas pieejas praktiskā lietojuma eksperimentālā pārbaude izkliedētai \Gls{tof} sensoru sistēmai.
+Šajā apakšnodaļā sniegta uz \Gls{snn} balstītas objektu atpazīšanas pieejas praktiskā lietojuma eksperimentālā pārbaude
+izkliedētai \Gls{tof} sensoru sistēmai.
 
 \Gls{tof} sensoru sistēmas \qty{360}{\degree} uztverei izmantoti divu veidu sensori, lai sasniegtu iepriekš noteiktu datu ātrumu \Gls{fps}. To galvenie raksturlielumi sniegti \ref{table:sensor_charact}. tabulā. Abiem sensoriem ir atšķirīgas priekšrocības un ierobežojumi. \textit{Monstar} sensori nodrošina plašāku \Gls{fov}, taču tiem ir īsāks darbības attālums un tie darbojas spektra 850~nm daļā, ko vairāk ietekmē saules gaismas traucējumi. Savukārt \textit{Blaze 101} sensoram ir lielāks uztveres attālums, un tas darbojas pie 940~nm, kas atbilst saules starojuma spektra minimumam, samazinot traucējumus. Tomēr tam ir šaurāks \Gls{fov}. Veidojot sistēmu, šie kompromisi ņemti vērā, lai līdzsvarotu pārklājumu, attālumu un noturību pret traucējumiem.
 
 \begin{table}[h]
-\caption{ToF kameru raksturlielumi mērījumu laikā}
+\caption{ToF kameru raksturlielumi}
 \label{table:sensor_charact}
 \footnotesize
 \centering
@@ -18,6 +19,10 @@ Basler Blaze 101 \cite{baslerBlaze101} & 10 & 0{,}3--10{,}0 & $640 \times 480$ &
 \end{tabularx}
 \end{table}
 
-Apmācība un salīdzinājumi veikti gan ar pašu iegūtām, gan publiski pieejamām datu kopām, piemēram, \textit{KITTI} LiDAR un \textit{Pandaset} uz priekšu vērsta neskenējoša LiDAR datu kopām \cite{xiao2021}. Šīs datu kopas nodrošināja etalonu ToF sensoru datu novērtēšanai salīdzinājumā ar plaši izmantotiem, uz LiDAR balstītiem uztveres modeļiem. \textit{Pandaset} neskenējošais LiDAR bija piemērots, jo tas vairāk līdzinājās ToF sensoru datiem, ļaujot tiešāk salīdzināt datu kopas un izcelt ToF sensoru priekšrocības un ierobežojumus reālos scenārijos.
+Apmācība un salīdzinājumi veikti gan ar pašu iegūtām, gan publiski pieejamām datu kopām, piemēram, \textit{KITTI} LiDAR un
+\textit{Pandaset} uz priekšu vērsta neskenējoša LiDAR datu kopām \cite{xiao2021}. Šīs datu kopas nodrošināja ToF
+sensoru datu novērtēšu salīdzinājumā ar plaši izmantotiem, uz LiDAR balstītiem uztveres modeļiem. \textit{Pandaset}
+neskenējošais LiDAR bija piemērots, jo tas vairāk līdzinājās ToF sensoru datiem, ļaujot tiešāk salīdzināt datu kopas un
+izcelt ToF sensoru priekšrocības un ierobežojumus reālos scenārijos.
 
 

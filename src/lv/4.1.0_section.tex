@@ -84,15 +84,27 @@ bitu peldošā punkta reizināšanas un uzkrāšanas operācijas enerģija ir \(
 \end{equation}
 kur \(N_{SynOp}\) apzīmē sinaptisko operāciju skaitu, bet locekļi \(E_{rdState}\), \(E_{wrState}\) atbilst enerģijai, kas patērēta attiecīgi sinaptisko svaru lasīšanai, neironu stāvokļu lasīšanai un atjaunināto neironu stāvokļu rakstīšanai. \(E_{ACC}\) apzīmē \Gls{acc} operāciju enerģiju, summējot ieejas bez reizināšanas. \(N_{Neurons}\) ir kopējais neironu skaits tīklā, un \(T\) ir laika soļu skaits.
 
-\Gls{snn} sinaptiskie aprēķini tiek veikti tikai tad, kad rodas impulsi. Kopējais sinaptiskās uzkrāšanas operāciju skaits inferencē ar \(T\) laika soļiem ir \cite{rueckauer2017}
+\Gls{snn} sinaptiskie aprēķini tiek veikti tikai tad, kad rodas impulsi. Kopējais sinaptiskās uzkrāšanas operāciju skaits
+inferencē ar \(T\) laika soļiem ir \cite{rueckauer2017}
+% \begin{equation}
+%   N_{\mathrm{SynOp}} =
+%   \sum_{t=1}^{T}
+%   \sum_{l=1}^{L}
+%   f_{\mathrm{in},l}\,
+%   N_{active,l}[t],
+% \end{equation}
+% kur \(N_{active,l}[t]\) ir neironu skaits, kuru membrānas stāvoklis tiek atjaunināts slānī \(l\) laika solī \(t\), un
+% \(f_{\mathrm{in},l}\) ir katra neirona ieeju skaits.
 \begin{equation}
-  N_{\mathrm{SynOp}} =
-  \sum_{t=1}^{T}
-  \sum_{l=1}^{L}
-  f_{\mathrm{in},l}\,
-  N_{active,l}[t],
+    N_{\mathrm{SynOp}} =
+    \sum_{l=1}^{L}
+    N_{\mathrm{neurons},l} \times
+    f_{\mathrm{in},l} \times
+    N_{\mathrm{spikes/syn},l},
+    \label{eq:snn_synops}
 \end{equation}
-kur \(N_{active,l}[t]\) ir neironu skaits, kuru membrānas stāvoklis tiek atjaunināts slānī \(l\) laika solī \(t\), un \(f_{\mathrm{in},l}\) ir katra neirona ieeju skaits.
+kur \(N_l\) ir neironu skaits slānī \(l\) un \(N_{\mathrm{spikes/syn},l}\) ir vidējais pulsu skaits uz katru sinapsi
+inference laika loga \(T\) laikā.
 
 \Gls{fpga} arhitektūrā konvolūcijas svari tiek glabāti mikroshēmas iekšējā \Gls{bram}, kas modelēta ar SRAM piekļuves
 enerģiju \(E_{rdWeight}=10\,\mathrm{pJ}\), savukārt neironu membrānas stāvokļi tiek glabāti ārējā SDRAM, iegūstot
@@ -101,6 +113,7 @@ enerģiju \(E_{rdWeight}=10\,\mathrm{pJ}\), savukārt neironu membrānas stāvok
 Lai salīdzinātu \Gls{snn} enerģijas patēriņu ar ekvivalentu \Gls{ann} realizāciju, relatīvo inferences enerģijas samazinājumu aprēķina šādi:
 \begin{equation}
     R = 1-\frac{E_{\mathrm{SNN}}}{E_{\mathrm{ANN}}}.
+    \label{eq:delta_e}
 \end{equation}
 
 \Gls{snn} aktivāciju retinājumu novērtē, lai raksturotu aktīvo neironu izeju īpatsvaru. Impulsu slānim \(l\) retinājumu definē šādi \cite{Zhou2020}:

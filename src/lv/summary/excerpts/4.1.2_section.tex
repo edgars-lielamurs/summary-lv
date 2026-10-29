@@ -26,7 +26,7 @@ VGG-13 (C=3)    & 13{,}1M & 63{,}67~\%    & \textbf{72{,}31} & 48{,}82      & 60
 
 \begin{table}[t]
 \centering
-\caption{Vidējās precizitātes salīdzinājums skatā no augšas (\%) KITTI validācijas datu kopā}
+\caption{Vidējās precizitātes AP salīdzinājums skatā no augšas BEV (\%) KITTI validācijas datu kopā}
 \label{tab:avg-precision}
 \tiny
 \begin{adjustbox}{max width=\textwidth}\begin{tabular}{@{}llccccccccc@{}}
@@ -51,8 +51,76 @@ PV-RCNN \cite{shi2020} & Punkti+vokseļi & \textbf{94{,}98} & \textbf{90{,}65} &
 \end{tabular}\end{adjustbox}
 \end{table}
 
-Kā ilustrēts \ref{fig:vox_size}. attēlā (a) ar \(C=2\), vokseļa izmēra izvēle būtiski ietekmē impulsu \textit{VGG-11} modeļa vidējo precizitāti. Tas norāda, cik svarīgi ir saglabāt mazu šūnas izmēru, lai mazākos mērogos atšķirtu gājēju un velosipēdistu klases. Savukārt lielākiem automobiļu objektiem vokseļa izmēra samazināšana ne vienmēr uzlabo precizitāti. \ref{fig:vox_size}. attēlā (b) vertikālā izšķirtspēja efektīvi palielināta, palielinot kanālu skaitu līdz 3 un nemainot laika soļu skaitu, tādējādi panākot ievērojamu automobiļu detektēšanas vidējās precizitātes uzlabojumu par 6,59~\%. Process atkārtots impulsu \textit{VGG-13} detektēšanas pamattīklam, un abu modeļu rezultāti sniegti \ref{tab:detection_sparsity}. tabulā. Palielinot tīkla dziļumu, novērojama līdzīga atkarība no vokseļa izmēra, vienlaikus sasniedzot augstāku vidējo precizitāti uz lielāku realizācijas izmaksu rēķina. Piemēram, izmantojot 2 kanālus katrā laika solī un saglabājot tādu pašu šūnas izmēru, velosipēdistu klasei uzlabojums ir 7,73~\% un automobiļu klasei — 7,54~\%. Salīdzinājumā ar cieši saistītu SNN risinājumu darbā \cite{Zhou2020} mūsu pieeja vairumā gadījumu sasniedz labāku veiktspēju pat bez mūsu darbā realizētiem izlaides savienojumiem, tikai nedaudz atpaliekot velosipēdistu kategorijā.
+Kā ilustrēts \ref{fig:vox_size}. attēlā (a) ar \(C=2\), vokseļa izmēra izvēle būtiski ietekmē impulsu \textit{VGG-11} modeļa
+vidējo precizitāti. Tas norāda, cik svarīgi ir saglabāt mazu šūnas izmēru, lai mazākos mērogos atšķirtu gājēju un
+velosipēdistu klases. Savukārt lielākiem automobiļu objektiem vokseļa izmēra samazināšana ne vienmēr uzlabo precizitāti.
+\ref{fig:vox_size}. attēlā (b) vertikālā izšķirtspēja efektīvi palielināta, palielinot kanālu skaitu līdz 3 un nemainot laika
+soļu skaitu, tādējādi panākot ievērojamu automobiļu detektēšanas vidējās precizitātes uzlabojumu par 6,59~\%. Process
+atkārtots impulsu \textit{VGG-13} detektēšanas pamattīklam, un abu modeļu rezultāti sniegti \ref{tab:detection_sparsity}.
+tabulā. Palielinot tīkla dziļumu, novērojama līdzīga atkarība no vokseļa izmēra, vienlaikus sasniedzot augstāku vidējo
+precizitāti uz lielāku realizācijas izmaksu rēķina. Piemēram, izmantojot 2 kanālus katrā laika solī un saglabājot tādu pašu
+šūnas izmēru, velosipēdistu klasei uzlabojums ir 7,73~\% un automobiļu klasei 7,54~\%. Salīdzinājumā ar cieši saistītu
+\Gls{snn}
+risinājumu darbā \cite{Zhou2020} šī pieeja vairumā gadījumu sasniedz labāku veiktspēju pat bez šī darbā realizētiem
+izlaides savienojumiem, tikai nedaudz atpaliekot velosipēdistu kategorijā.
 
-Jāatzīmē arī, ka specializētās aparatūras sistēmās impulsi tiek izstaroti un pārraidīti uz nākamajiem slāņiem tikai tad, kad neirona membrāna sasniedz noteiktu slieksni. Neironu impulsu ģenerēšanas dinamikas izpratne ir būtiska maksimālas aprēķinu efektivitātes sasniegšanai. Retinājumu izmanto kā slāņa aktīvo neironu īpatsvara mēru, kas atspoguļo tīkla aktivitātes sadalījumu. \ref{tab:detection_sparsity}. tabulā sniegti visā datu kopā vidējoti retinājuma mērījumi kopā ar modeļa parametru skaitu un vidējo precizitāti. Starp tiem \textit{VGG-11} realizācijai ir zemāks retinājuma rādītājs — 55,73~\%, kas ir līdzīgā līmenī ar salīdzināto risinājumu.
+Jāatzīmē arī, ka specializētās aparatūras sistēmās impulsi tiek izstaroti un pārraidīti uz nākamajiem slāņiem tikai tad, kad
+neirona membrāna sasniedz noteiktu slieksni. Neironu impulsu ģenerēšanas dinamikas izpratne ir būtiska maksimālas aprēķinu
+efektivitātes sasniegšanai. Retinājumu izmanto kā slāņa aktīvo neironu īpatsvara mēru, kas atspoguļo tīkla aktivitātes
+sadalījumu. \ref{tab:detection_sparsity}. tabulā sniegti visā datu kopā vidējoti retinājuma mērījumi kopā ar modeļa parametru
+skaitu un vidējo precizitāti. Starp tiem \textit{VGG-11} realizācijai ir zemāks retinājuma rādītājs 55,73~\%, kas ir
+līdzīgā līmenī ar salīdzināto risinājumu.
 
-Rezultāti, kas iegūti ar \(C=3\) kanāliem katrā laika solī, salīdzinājumā ar izvēlētām tradicionālām ANN arhitektūrām sniegti \ref{tab:avg-precision}. tabulā. Lai gan mūsu risinājums ir mazāk precīzs nekā sarežģītāki ANN modeļi, tā veiktspēja ir konkurētspējīga ar dažām vienkāršākām tradicionālajām pieejām, īpaši gājēju detektēšanā. Ar \textit{VGG-13} sasniegtā klašu vidējā precizitāte attiecīgi 63,43~\%, 60,79~\% un 57,73~\% vieglajā, vidējā un sarežģītajā kategorijā pārspēj tikai \textit{VoxelNet}, \textit{PointRCNN} un līdzvērtīgus modeļus, galvenokārt zemākas automobiļu klases detektēšanas precizitātes dēļ. Tomēr galvenais arguments \Gls{snn} izmantošanai ir retināta apstrāde, kas balstās tikai uz \Gls{acc} operācijām tradicionālas blīvas apstrādes ar \Gls{mac} operācijām vietā. Lai gan būtu jāveic plaši papildu eksperimenti ar neiromorfo aparatūru, lai kritiski izvērtētu apgalvojumus par mazu jaudas patēriņu, jaunākajos pētījumos impulsu \textit{VGG} energoefektivitāte novērtēta analītiski \cite{dampfhoffer2022}. Izmantojot darba \cite{dampfhoffer2022} metodoloģiju, tradicionālo \Gls{cnn} un \Gls{snn} patērēto enerģiju var novērtēt attiecīgi ar (\ref{eq:eann}) un (\ref{eq:esnn}). Relatīvās enerģijas izmaksas pieņemtas atbilstoši darbam \cite{dampfhoffer2022} \qty{45}{\nano\metre} \Gls{cmos} tehnoloģijai. \textit{VGG-11} un \textit{VGG-13} topoloģiju attiecības ir attiecīgi \(N_{syn/neur}=\) \num{9.0e2} un \num{9.9e2}. Ar \(T=5\) laika soļiem un \(N_{spikes/syn}=1\) iegūst \(E_{ANN}/E_{SNN}=\)1,378 un 1,379 reizes lielāku energoefektivitāti attiecīgi \textit{VGG-11} un \textit{VGG-13} salīdzinājumā ar ekvivalentu \Gls{ann} modeli. Kā secināts darbā \cite{dampfhoffer2022}, energoefektivitātei ir būtiski saglabāt mazu laika soļu skaitu. Tomēr ar mazāku laika soļu skaitu enerģijas patēriņā dominē atmiņas lasīšanas un rakstīšanas operācijas sinapsēs, jo \(N_{syn} \times N_{spikes/syn} >> N_{neur} \times T\). Pat ar \(T=10\) laika soļiem energoefektivitāte samazinās nenozīmīgi — 1,004 reizes. Šajā darbā izmantotajai modeļa topoloģijai tikai turpmāka \(N_{spikes/syn}\) samazināšana varētu būtiski uzlabot energoefektivitāti salīdzinājumā ar \Gls{ann}.
+Rezultāti, kas iegūti ar \(C=3\) kanāliem katrā laika solī, salīdzinājumā ar izvēlētām tradicionālām \Gls{ann} arhitektūrām sniegti
+\ref{tab:avg-precision}. tabulā. Lai gan šī risinājums ir mazāk precīzs nekā sarežģītāki \Gls{ann} modeļi, tā veiktspēja ir
+konkurētspējīga ar dažām vienkāršākām tradicionālajām pieejām, īpaši gājēju detektēšanā. Ar \textit{VGG-13} sasniegtā klašu
+vidējā precizitāte attiecīgi 63,43~\%, 60,79~\% un 57,73~\% vieglajā, vidējā un sarežģītajā kategorijā pārspēj tikai
+\textit{VoxelNet}, \textit{PointRCNN} un līdzvērtīgus modeļus, galvenokārt zemākas automobiļu klases detektēšanas
+precizitātes dēļ. Tomēr galvenais arguments \Gls{snn} izmantošanai ir reta apstrāde, kas balstās tikai uz \Gls{acc}
+operācijām tradicionālas blīvas apstrādes ar \Gls{mac} operācijām vietā.
+
+Lai gan būtu jāveic plaši papildu eksperimenti ar
+neiromorfo aparatūru, lai kritiski izvērtētu apgalvojumus par mazu jaudas patēriņu, jaunākajos pētījumos impulsu \textit{VGG}
+energoefektivitāte novērtēta analītiski \cite{dampfhoffer2022}. Izmantojot darba \cite{dampfhoffer2022} metodoloģiju,
+tradicionālo \Gls{cnn} un \Gls{snn} patērēto enerģiju var novērtēt attiecīgi ar (\ref{eq:eann}) un (\ref{eq:esnn}). Relatīvās
+enerģijas izmaksas pieņemtas atbilstoši darbam \cite{dampfhoffer2022} \qty{45}{\nano\metre} \Gls{cmos} tehnoloģijai.
+% \textit{VGG-11} un \textit{VGG-13} topoloģiju attiecības ir attiecīgi \(N_{syn/neur}=\) \num{9.0e2} un \num{9.9e2}. Ar
+% \(T=5\) laika soļiem un \(N_{spikes/syn}=1\) iegūst \(E_{ANN}/E_{SNN}=\)1,378 un 1,379 reizes lielāku energoefektivitāti
+% attiecīgi \textit{VGG-11} un \textit{VGG-13} salīdzinājumā ar ekvivalentu \Gls{ann} modeli.
+% Kā secināts darbā \cite{dampfhoffer2022}, energoefektivitātei ir būtiski saglabāt mazu laika soļu skaitu. Tomēr ar mazāku
+% laika soļu skaitu enerģijas patēriņā dominē atmiņas lasīšanas un rakstīšanas operācijas sinapsēs, jo \(N_{syn} \times
+% N_{spikes/syn} >> N_{neur} \times T\). Pat ar \(T=10\) laika soļiem energoefektivitāte samazinās nenozīmīgi 1,004 reizes.
+% Šajā darbā izmantotajai modeļa topoloģijai tikai turpmāka \(N_{spikes/syn}\) samazināšana varētu būtiski uzlabot
+% energoefektivitāti salīdzinājumā ar \Gls{ann}.
+Novērtējuma rezultāti apkopoti \ref{tab:snn_energy_comparison}. tabulā. VGG-11 un VGG-13 arhitektūru vidējās sinapšu un neironu
+skaita attiecības \(N_{\mathrm{syn}}/N_{\mathrm{neur}}\) ir attiecīgi \num{9.0e2} un \num{9.9e2}. Pieņemot \(T=5\)
+simulācijas laika soļus un vidēji \(N_{\mathrm{spikes/syn}}=1\) impulsu uz vienu sinapsi visā inferenču laika intervālā,
+saskaņā ar (\ref{eq:delta_e}) aprēķinātais \Gls{snn} arhitektūru enerģijas patēriņš ir attiecīgi par 27,43\% un 27,48\%
+mazāks nekā ekvivalentajiem \Gls{ann} modeļiem.
+Kā secināts pētījumā \cite{dampfhoffer2022}, neliels simulācijas laika soļu skaits ir būtisks energoefektivitātes
+nodrošināšanai. Tomēr pie neliela laika soļu skaita enerģijas patēriņā dominē ar sinaptiskajām operācijām saistītās atmiņas
+lasīšanas un rakstīšanas operācijas, jo \(N_{\mathrm{syn}} \times N_{\mathrm{spikes/syn}} \gg N_{\mathrm{neur}} \times T\).
+Tādējādi simulācijas laika soļu skaita palielināšana var samazināt energoefektivitātes priekšrocību.
+Palielinot simulācijas laika soļu skaitu no \(T=5\) līdz \(T=10\) un saglabājot \(N_{\mathrm{spikes/syn}}=1\), aprēķinātais
+enerģijas patēriņš palielinājās tikai par 0,4\%. Šāds salīdzinoši neliels pieaugums ir skaidrojams ar novērtēto arhitektūru
+lielo sinapšu un neironu skaita attiecību, kuras dēļ enerģijas modelī dominē sinaptiskās operācijas un ar tām saistītās
+atmiņas piekļuves. Tādēļ aplūkotajās arhitektūrās būtiskāku enerģijas patēriņa samazinājumu attiecībā pret \Gls{ann} modeļiem
+varētu panākt, samazinot vidējo impulsu skaitu uz vienu sinapsi \(N_{\mathrm{spikes/syn}}\).
+
+\begin{table}[t]
+\centering
+\caption{Pulsējošu VGG arhitektūru analītiski novērtētais enerģijas patēriņa samazinājums salīdzinājumā ar ekvivalentajiem ANN
+  modeļiem pie \(T=5\).}
+\label{tab:snn_energy_comparison}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Arhitektūra} &
+\(\boldsymbol{N_{\mathrm{syn}}/N_{\mathrm{neur}}}\) &
+\textbf{Enerģijas patēriņa} \\
+& & \textbf{samazinājums (\%)} \\
+\midrule
+VGG-11 & \num{9.0e2} & 27,43 \\
+VGG-13 & \num{9.9e2} & 27,48 \\
+\bottomrule
+\end{tabular}
+\end{table}
