@@ -1,7 +1,13 @@
 \setglossarystyle{tree}
 \makeglossaries
 
+
 \renewcommand{\glsentryfmt}{\glsentryshort{\glslabel}}
+% \renewcommand{\glsentryfmt}{%
+% \ifglsused{\glslabel}%
+%     {\glsentryshort{\glslabel}\glsifplural{s}{}}%
+%     {\textit{\glsentrylong{\glslabel}\glsifplural{s}{}}     (\glsentryshort{\glslabel}\glsifplural{s}{})}%
+% }
 
 \renewcommand*{\glsgroupskip}{}
 \newacronym{acc}{ACC}{uzkrāšana}

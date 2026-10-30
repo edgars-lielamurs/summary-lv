@@ -11,6 +11,9 @@ $pdflatex = 'xelatex %O -shell-escape %S';
 # instruct latexmk to generate a pdf file
 $pdf_mode = 1;
 
+# set output filename
+$jobname = 'Promocijas_darba_kopsavilkums_Neiromorfo_skaitlosanas_sistemu_izstrade_izmantojot_programmejamus_logikas_masivus';
+
 # set up directory for auxilary and output files
 $out_dir = 'out';
 
