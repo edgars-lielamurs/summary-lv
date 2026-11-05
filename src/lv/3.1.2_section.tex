@@ -1,6 +1,7 @@
 Laikā kodētos impulsu signālus no \Gls{aer} dekodētāja apstrādā uz notikumiem balstītu konvolūciju slāņi, kā ilustrēts \ref{fig:bsf_arch}.
 attēlā. Šie slāņi atdarina sinaptiskās operācijas fiksētā uztveres laukā, veicot ieejas impulsu svērto summēšanu, kā
-aprakstīts (\ref{eq:channel_conv}). Tā kā impulsi ir bināri ($s \in \{0,1\}$), apstrādes kodols tradicionālās \Gls{mac}
+aprakstīts (\ref{eq:channel_conv}). Tā kā impulsi ir bināri ($s \in \{0,1\}$), apstrādes kodols tradicionālās
+\textit{reizināšanas un uzkrāšanas} \glsf{mac}
 operācijas starp datiem un svariem aizstāj ar svaru bināro maskēšanu, reducējot impulsa un svara reizināšanu līdz
 \begin{equation}
   w \cdot s =
@@ -9,9 +10,15 @@ operācijas starp datiem un svariem aizstāj ar svaru bināro maskēšanu, reduc
     0, & s=0
   \end{cases}
 \end{equation}
-Tas ļauj reizināšanas operāciju aizstāt ar nosacītu svara izvēli. Tai seko \Gls{acc}, kas realizēta ar \Gls{pta}. Būtiski, ka šīs \Gls{acc} operācijas vada notikumi un tās notiek tikai tad, ja ir impulsi, ievērojami samazinot liekus aprēķinus.
+Tas ļauj reizināšanas operāciju aizstāt ar nosacītu svara izvēli. Tai seko \Gls{acc}, kas realizēta ar \textit{konveijerizētu
+kokveida summatoru} \glsf{pta}. Būtiski, ka šīs \Gls{acc} operācijas vada notikumi un tās notiek tikai tad, ja ir impulsi,
+ievērojami samazinot liekus aprēķinus.
 
-Šajā shēmā svaru un nobīžu parametri tiek glabāti divportu \Gls{ocm} blokos tuvu apstrādes loģikai. Šī pieeja izmanto FPGA iekšējo \Gls{bram}, lai samazinātu latentumu un izvairītos no ārējās atmiņas transakcijām. Svari tiek statiski konfigurēti pirms izpildes ar atmiņā kartētu AXI-Lite saskarni un atkārtoti izmantoti katrā inferences ciklā. Lai gan dziļajiem SNN var būt nepieciešams ievērojams svaru atmiņas apjoms, svaru bitu platuma kvantēšanu var piemērot, nemazinot veiktspēju \cite{shen2024}.
+Šajā shēmā svaru un nobīžu parametri tiek glabāti divportu \textit{mikroshēmas iekšējās atmiņas} \glsf{ocm} blokos tuvu
+apstrādes loģikai. Šī pieeja izmanto \Gls{fpga} iekšējo \textit{bloku brīvpiekļuves atmiņu} \glsf{bram}, lai samazinātu latentumu un izvairītos no ārējās atmiņas
+transakcijām. Svari tiek statiski konfigurēti pirms izpildes ar atmiņā kartētu AXI-Lite saskarni un atkārtoti izmantoti katrā
+inferences ciklā. Lai gan dziļajiem SNN var būt nepieciešams ievērojams svaru atmiņas apjoms, svaru bitu platuma kvantēšanu
+var piemērot, nemazinot veiktspēju \cite{shen2024}.
 
 \begin{figure}[htbp]
   % \includegraphics[width=\columnwidth]{fig/lv/conv_layer-v1.pdf}
@@ -27,7 +34,7 @@ Resursu taupīšanai maskēšanas un \Gls{pta} operācijas tiek veiktas secīgi 
 \begin{figure}[htbp]
   % \includegraphics[width=\columnwidth]{fig/lv/conv_time_steps-v2.pdf}
   \includegraphics[width=\columnwidth]{fig/conv_time_steps-v2.pdf}
-  \caption{Retināta konvolūcija ar līdzsvarotu paralēlismu un resursu atkārtotu izmantošanu: paralēla ieejas kanālu apstrāde un laikā multipleksēta izejas kanālu apstrāde.}
+  \caption{Uz notikumiem balstīta konvolūcija ar līdzsvarotu paralēlismu un resursu atkārtotu izmantošanu: paralēla ieejas kanālu apstrāde un laikā multipleksēta izejas kanālu apstrāde.}
   \label{fig:conv_steps}
 \end{figure}
 

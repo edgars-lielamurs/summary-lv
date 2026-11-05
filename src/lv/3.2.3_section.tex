@@ -1,6 +1,10 @@
-Vairumā temporālās kodēšanas gadījumu pēdējā slānī izmanto impulsu akumulatoru \cite{Fang2021, kim2021, rathi2020}. Galīgo izeju aprēķina kā vairāku impulsu summu visos \(T\) laika soļos, lai veicinātu visaugstāko impulsu ģenerēšanas biežumu neironam, kas saistīts ar sagaidāmo izeju.
-
-Impulsu pamattīkla izejas impulsi tiek pārveidoti uzkrātā pazīmju reprezentācijā, pirms tos nodod \Gls{ssd} detektēšanas galvai. Izeja tiek vidējota visos \(T\) laika soļos. Izejas pazīmju kartei ar kanālu \(c\) un telpiskajām koordinātām \(h, w\) laikā vidējoto pazīmju reprezentāciju nosaka
+Vairumā temporālās kodēšanas gadījumu pēdējā slānī izmanto impulsu akumulatoru \cite{Fang2021, kim2021, rathi2020}. Galīgo
+izeju aprēķina kā vairāku impulsu summu visos \(T\) laika soļos, lai veicinātu visaugstāko impulsu ģenerēšanas biežumu
+neironam, kas saistīts ar sagaidāmo izeju.
+% Impulsu pamattīkla izejas impulsi tiek pārveidoti uzkrātā pazīmju reprezentācijā, pirms tos nodod \Gls{ssd} detektēšanas
+% galvai. Izeja tiek vidējota visos \(T\) laika soļos.
+Izejas pazīmju kartei ar kanālu \(c\) un telpiskajām koordinātām \(h,
+w\) laikā vidējoto pazīmju reprezentāciju nosaka
 \begin{equation}
     F_{c,h,w} =
     \frac{1}{T}\sum_{t=0}^{T-1} S_{t,c,h,w},

@@ -1,7 +1,8 @@
 Konvolūcijas slāņi ģenerē pazīmju kartes, iegūstot vizuālas pazīmes, kas līdzinās orientētu malu detektoriem un Gabora filtru
 izejām \cite{tavanaei2019}. Konvolūcijas slāņus plaši izmanto \Gls{snn} arhitektūrās, parasti aizstājot \Gls{relu}
 aktivācijas ar \Gls{if} vai \Gls{lif} neironiem \cite{cao2015}. Šādi tīkli objektu detektēšanā notikumu attēlu datu kopās
-pārspēj tradicionālos \Gls{ann} \cite{zhang2023}. Ir izveidoti \Gls{snn}, kuru pamatā ir esošas \Gls{cnn} arhitektūras,
+pārspēj tradicionālos \Gls{ann} \cite{zhang2023}. Ir izveidoti \Gls{snn}, kuru pamatā ir esošas \textit{konvolucionālo
+neironu tīklu} \glsf{cnn} arhitektūras,
 piemēram, \textit{VGG} \cite{na2022}. Dziļākie slāņi efektīvi apvieno iepriekšējo slāņu pazīmes, lai iegūtu arvien
 sarežģītākas pazīmes. Ieejas pazīmju karte tiek sadalīta mazākās neironu apakškopās. Katrs nākamā slāņa neirons saņem
 impulsus no savas neironu apakškopas un tie tiek reizināti ar svaru kodolu \cite{tavanaei2017}:
@@ -32,31 +33,93 @@ kur \(d\) indeksē ieejas kanālus, \(c\) indeksē izejas kanālus un \(w^l_{c,d
 \end{equation}
 neironiem, kur \(p\) ir papildinājuma apjoms pie malām un \(s\) ir solis - pikseļu skaits, par kuru kodolu pārvieto vienā reizē.
 
+% \begin{figure}[h!]
+% \begin{adjustbox}{max width=\linewidth,center}
+% \centering
+%     \begin{tikzpicture}[
+%         >=Stealth,
+%         neuron/.style={circle, draw, fill=gray!50, minimum size=0.9cm},
+%         spike/.style={rectangle, draw, minimum width=1.2cm, minimum height=0.6cm},
+%         weight/.style={midway, fill=white, inner sep=1pt},
+%         kcell/.style={draw, minimum width=0.6cm, minimum height=0.6cm, font=\scriptsize, fill=orange!15},
+%     ]
+%     \draw[step=0.6cm, gray] (0,0) grid (4.2,4.2);
+%     \foreach \x in {1.2,1.8,2.4}{
+%         \foreach \y in {1.2,1.8,2.4}{
+%             \filldraw[fill=gray!30, draw=black] (\x,\y) rectangle ++(0.6,0.6);
+%         }
+%     }
+%     \foreach \i in {0,...,6}{
+%         \foreach \j in {0,...,6}{
+%             \pgfmathtruncatemacro{\spike}{rnd>0.75}
+%             \node at ({0.3+0.6*\i},{0.3+0.6*\j}) {\spike};
+%         }
+%     }
+%     \node[below=0.2cm] at (2.1,0) {\small Impulsu pazīmju karte $s^{t,l-1}$};
+%     \node[above=0.15cm] at (2.1,4.2) {\small $3 \times 3$ uztveres lauks};
+%
+%     \foreach \r in {0,...,2} {
+%         \foreach \c in {0,...,2} {
+%             \pgfmathtruncatemacro{\rr}{\r+1}
+%             \pgfmathtruncatemacro{\cc}{\c+1}
+%             \node[kcell] (k-\r-\c) at ({6.4+0.8*\c},{2.1+0.6*(1-\r)}) {$w_{\rr\cc}$};
+%         }
+%     }
+%     \node[above=0.15cm] at (6.7,2.1+0.6+0.3) {\small Kodols $w^l_{m,n}$};
+%
+%     \node at (5.15,2.1) {\Large $\circledast$};
+%     \draw[-] (3.0,1.8) -- (4.65,2.1);
+%     \draw[-] (3.0,2.4) -- (4.65,2.1);
+%
+%     \node[neuron, right=1.4cm of k-1-2] (sum) {$\sum_{m,n}$};
+%     \draw[->] (k-0-2) -- (sum);
+%     \draw[->] (k-2-2) -- (sum);
+%
+%     \node[neuron, right=1.8cm of sum] (spikef) {${u}^{t,l}_{i,j}$};
+%     \node[spike, right=1.8cm of spikef] (y) {$s^{t,l}_{i,j}$};
+%     \draw[->] (sum) -- (spikef);
+%     \draw[->] (spikef) -- node[weight] {$\Theta(\cdot)$} (y);
+%
+%     \node[above=0.3cm] at (9.6,2.6) {\small Konvolūcija};
+%     \node[above=0.3cm of spikef] {\small Impulsu neirons};
+%     \end{tikzpicture}
+% \end{adjustbox}
+% \caption{Impulsu konvolūcijas slānis. Koplietots reālu vērtību $3 \times 3$ kodols $w^l_{m,n}$ tiek konvolvēts ar binārās ieejas impulsu pazīmju kartes $s^{t,l-1}$ uztveres lauku. Svērto summu integrē impulsu neirons, kas ģenerē izejas impulsu $s^{t,l}_{i,j}$ pozīcijā $(i,j)$.}
+% \label{fig:spiking_conv_receptive_field}
+% \end{figure}
+
+
 \begin{figure}[h!]
 \begin{adjustbox}{max width=\linewidth,center}
 \centering
     \begin{tikzpicture}[
+        % transform canvas={scale=0.8},
         >=Stealth,
         neuron/.style={circle, draw, fill=gray!50, minimum size=0.9cm},
         spike/.style={rectangle, draw, minimum width=1.2cm, minimum height=0.6cm},
         weight/.style={midway, fill=white, inner sep=1pt},
         kcell/.style={draw, minimum width=0.6cm, minimum height=0.6cm, font=\scriptsize, fill=orange!15},
     ]
+    % Input feature map grid (7x7 cells)
     \draw[step=0.6cm, gray] (0,0) grid (4.2,4.2);
+    % Highlight receptive field (3x3 kernel footprint)
     \foreach \x in {1.2,1.8,2.4}{
         \foreach \y in {1.2,1.8,2.4}{
             \filldraw[fill=gray!30, draw=black] (\x,\y) rectangle ++(0.6,0.6);
         }
     }
+    % Generate spikes
     \foreach \i in {0,...,6}{
         \foreach \j in {0,...,6}{
             \pgfmathtruncatemacro{\spike}{rnd>0.75}
             \node at ({0.3+0.6*\i},{0.3+0.6*\j}) {\spike};
         }
     }
-    \node[below=0.2cm] at (2.1,0) {\small Impulsu pazīmju karte $s^{t,l-1}$};
-    \node[above=0.15cm] at (2.1,4.2) {\small $3 \times 3$ uztveres lauks};
+    % Label input
+    \node[below=0.2cm] at (2.1,0) {\small Spike feature map $s^{t,l-1}$};
+    \node[above=0.15cm] at (2.1,4.2) {\small $3 \times 3$ receptive field};
 
+    % ---- Real-valued weight kernel (symbolic w_{mn}) ----
     \foreach \r in {0,...,2} {
         \foreach \c in {0,...,2} {
             \pgfmathtruncatemacro{\rr}{\r+1}
@@ -64,27 +127,32 @@ neironiem, kur \(p\) ir papildinājuma apjoms pie malām un \(s\) ir solis - pik
             \node[kcell] (k-\r-\c) at ({6.4+0.8*\c},{2.1+0.6*(1-\r)}) {$w_{\rr\cc}$};
         }
     }
-    \node[above=0.15cm] at (6.7,2.1+0.6+0.3) {\small Kodols $w^l_{m,n}$};
+    \node[above=0.15cm] at (6.7,2.1+0.6+0.3) {\small Kernel $w^l_{m,n}$};
 
+    % Convolution operator between receptive field and kernel
     \node at (5.15,2.1) {\Large $\circledast$};
     \draw[-] (3.0,1.8) -- (4.65,2.1);
     \draw[-] (3.0,2.4) -- (4.65,2.1);
 
+    % Kernel feeds into the summation
     \node[neuron, right=1.4cm of k-1-2] (sum) {$\sum_{m,n}$};
     \draw[->] (k-0-2) -- (sum);
     \draw[->] (k-2-2) -- (sum);
 
+    % Spiking neuron
     \node[neuron, right=1.8cm of sum] (spikef) {${u}^{t,l}_{i,j}$};
+    % Output spike
     \node[spike, right=1.8cm of spikef] (y) {$s^{t,l}_{i,j}$};
+    % Connections
     \draw[->] (sum) -- (spikef);
     \draw[->] (spikef) -- node[weight] {$\Theta(\cdot)$} (y);
 
-    \node[above=0.3cm] at (9.6,2.6) {\small Konvolūcija};
-    \node[above=0.3cm of spikef] {\small Impulsu neirons};
+    \node[above=0.3cm] at (9.6,2.6) {\small Convolution};
+    \node[above=0.3cm of spikef] {\small Spiking neuron};
     \end{tikzpicture}
 \end{adjustbox}
-\caption{Impulsu konvolūcijas slānis. Koplietots reālu vērtību $3 \times 3$ kodols $w^l_{m,n}$ tiek konvolvēts ar binārās ieejas impulsu pazīmju kartes $s^{t,l-1}$ uztveres lauku. Svērto summu integrē impulsu neirons, kas ģenerē izejas impulsu $s^{t,l}_{i,j}$ pozīcijā $(i,j)$.}
+\caption{Impulsu konvolūcijas slānis. Koplietots reālu vērtību $3 \times 3$ kodols $w^l_{m,n}$ tiek konvolvēts ar binārās
+ieejas impulsu pazīmju kartes $s^{t,l-1}$ uztveres lauku. Svērto summu integrē impulsu neirons, kas ģenerē izejas impulsu
+$s^{t,l}_{i,j}$ pozīcijā $(i,j)$.}
 \label{fig:spiking_conv_receptive_field}
 \end{figure}
-
-

@@ -4,16 +4,18 @@ laika solī nepieciešamas tikai 5 peldošā punkta operācijas, savukārt Hodž
 dinamikas dēļ vajag līdz pat 1200 operācijām \cite{hwang2024}. Tomēr shēmu izveide \Gls{lif} neironu simulācijai lielā mērogā
 joprojām ir sarežģīta \cite{kousanakis2017}.
 
-Kā parādīts (\ref{eq:LIF_exp}), \Gls{lif} membrānas dinamikas analītiskais atrisinājums ietver eksponenciālās dilšanas
-locekli. Eksponenciālās funkcijas tieša aprēķināšana katrā laika solī katram neironam var kļūt skaitļošanas ziņā dārga, īpaši
+% Kā parādīts (\ref{eq:LIF_exp}), \Gls{lif} membrānas dinamikas analītiskais atrisinājums ietver eksponenciālās dilšanas
+% locekli.
+Kā parādīts (\ref{eq:LIF_exp}), eksponenciālās funkcijas tieša aprēķināšana katrā laika solī katram neironam var kļūt skaitļošanas ziņā dārga, īpaši
 \Gls{fpga} sistēmās.
-
-Viena aparatūras risinājumu kategorija eksponenciālo funkciju aproksimē tieši. Bieži izmantotās pieejas ietver \gls{pwl}
-aproksimācijas \cite{chakraborty2025}, bitu nobīdes metodes ar bāzi 2 \cite{corradi2021}, uz \gls{cordic} balstītas
-realizācijas \cite{heidarpour2016} un uzmeklēšanas tabulu metodes \cite{kim2020}. Lai gan šīs pieejas ir efektīvas, tās
-palielina sarežģītību un resursu patēriņu.
-
-Otra risinājumu grupa analītiskās formas aprēķina vietā izmanto diferenciālvienādojuma skaitlisko diskretizāciju. Praksē
+% Viena aparatūras risinājumu kategorija eksponenciālo funkciju aproksimē tieši. Bieži izmantotās pieejas ietver \textit{pa
+% daļām lineāras} \glsf{pwl}
+% aproksimācijas \cite{chakraborty2025}, bitu nobīdes metodes ar bāzi 2 \cite{corradi2021}, uz \textit{koordinātu rotācijas
+% digitālā skaitļotāja} \glsf{cordic} balstītas
+% realizācijas \cite{heidarpour2016} un uzmeklēšanas tabulu metodes \cite{kim2020}. Lai gan šīs pieejas ir efektīvas, tās
+% palielina sarežģītību un resursu patēriņu.
+% Otra
+Esošie risinājumu grupa analītiskās formas aprēķina vietā izmanto diferenciālvienādojuma skaitlisko diskretizāciju. Praksē
 lielākā daļa \Gls{snn} apmācības un inferences rīku ķēžu izmanto šādus vienkāršotus diskrētus modeļus \cite{Fang2021},
 demonstrējot augstas precizitātes inferences rezultātus. Dažās realizācijās \Gls{lif} dinamika tiek vēl vairāk vienkāršota, katrā laika solī samazinot membrānas potenciālu ar fiksētu dilšanas koeficientu \cite{gupta2020}.
 

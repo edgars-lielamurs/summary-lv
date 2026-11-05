@@ -1,4 +1,9 @@
-Impulsu kodēšana ir būtiska \Gls{snn} sastāvdaļa, kas nosaka informācijas pārraides veidu ar diskrētiem impulsu laikiem. Dati jākodē impulsu virknēs, lai 3D punktu mākonis tiktu pārveidots laika informācijā \cite{safa2021}. Izmantota \Gls{tvc} metode, kas retinātus telpiski temporālus datus pārveido režģveida formātā nelielā laika soļu skaitā. Līdzīga pieeja atrodama darbos \cite{Cordone2022, fan2025}, kur to sauc par vokseļu kuba kodēšanu. Salīdzinājumā ar parasto vokseļu režģa kodēšanu \cite{bardow2016} vokseļu kuba kodēšana ļauj katrā laika solī kanālu dimensijā glabāt vairāk informācijas.
+Impulsu kodēšana ir būtiska \Gls{snn} sastāvdaļa, kas nosaka informācijas pārraides veidu ar diskrētiem impulsu laikiem. Dati
+jākodē impulsu virknēs, lai 3D punktu mākonis tiktu pārveidots laika informācijā \cite{safa2021}. Izmantota \textit{temporālā
+vokseļu kodēšanas} \glsf{tvc} metode,
+kas retinātus telpiski temporālus datus pārveido režģveida formātā nelielā laika soļu skaitā. Līdzīga pieeja atrodama darbos
+\cite{Cordone2022, fan2025}, kur to sauc par vokseļu kuba kodēšanu. Salīdzinājumā ar parasto vokseļu režģa kodēšanu
+\cite{bardow2016} vokseļu kuba kodēšana ļauj katrā laika solī kanālu dimensijā glabāt vairāk informācijas.
 
 Veicot šo pārveidošanu, iegūst telpiskās informācijas vairāku soļu impulsu reprezentāciju. Šāda kodēšanas metode izmanto \Gls{snn} rekurento dabu.
 
@@ -30,7 +35,8 @@ Ja LiDAR vietā izmanto \Gls{tof} datus, kā parādīts \ref{fig:3dscnn_tof_arch
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=\textwidth]{fig/lv/3dscnn_architecture-v3.pdf}
+    % \includegraphics[width=\textwidth]{fig/lv/3dscnn_architecture-v3.pdf}
+    \includegraphics[width=\textwidth]{fig/3dscnn_architecture-v3.pdf}
     \caption{3D-CSNN arhitektūra. Vairāku ToF sensoru nepārtrauktā punktu mākoņu telpa tiek reģistrēta un retināta, izveidojot diskrētus režģus vairākos laika soļos objektu detektēšanai ar 3D konvolucionālu \Gls{snn}.}
     \label{fig:3dscnn_tof_arch}
 \end{figure}

@@ -5,7 +5,8 @@ atvieglošanai, īpaši uz PCIe balstītās \Gls{fpga} ierīcēs. Tā kā pats s
 promocijas darba netiek pilnībā apskatīts, šeit apkopotas tikai piedāvāto neiromorfo paplašinājumu izpratnei nepieciešamās koncepcijas.
 
 Ietvars, kas parādīts \ref{fig:overall_arch}. attēlā, ietver sistēmas arhitektūras komponentu VHDL bibliotēku, kodola telpas
-draiveri un lietotāja telpas API. Tas izveido konveijerizētu paātrinātāju, savienojot konveijerizētas \Gls{pu} ar AXI-Stream.
+draiveri un lietotāja telpas API. Tas izveido konveijerizētu paātrinātāju, savienojot konveijerizētas \textit{apstrādes
+vienības} \glsf{pu} ar AXI-Stream.
 Lietotājam jānorāda tikai IP kodolu nosaukumu un parametru saraksts. Ietvars arī nodrošina reģistru kartēšanu, ļaujot
 komponentus konfigurēt no draivera.
 
@@ -13,7 +14,8 @@ Datu pārsūtīšanai starp resursdatora skaitļošanas platformu, SDRAM un paā
 
 \begin{figure}[!t]
   \centering
-  \includegraphics[width=0.75\linewidth]{fig/lv/snn_silhouse-v5.pdf}
+  % \includegraphics[width=0.75\linewidth]{fig/lv/snn_silhouse-v5.pdf}
+  \includegraphics[width=0.75\linewidth]{fig/snn_silhouse-v5.pdf}
   \caption{Automatizēta SNN paātrinātāja izveide heterogēnām skaitļošanas platformām.}
   \label{fig:overall_arch}
 \end{figure}

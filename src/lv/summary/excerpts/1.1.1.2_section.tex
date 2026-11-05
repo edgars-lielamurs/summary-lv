@@ -1,10 +1,17 @@
-Lai gan detalizēti modeļi ļauj ģenerēt signālus, kas cieši līdzinās īstu neironu signāliem, šādu neironu tīklu realizācija un analīze ir sarežģīta to kompleksās uzvedības dēļ. Lai atvieglotu impulsu kodēšanas un izplatīšanās izpēti neironu tīklos, izstrādāti formāli impulsu ģenerēšanas modeļi. Vēsturiski visplašāk izmantotie formālie modeļi ir Lapika \cite{abbott1999} un Steina \cite{stein1967} izstrādātie \Gls{if} un \Gls{lif} modeļi. Abus modeļus bieži realizē aparatūrā.
+Lai gan detalizēti modeļi ļauj ģenerēt signālus, kas cieši līdzinās īstu neironu signāliem, šādu neironu tīklu realizācija un
+analīze ir sarežģīta to kompleksās uzvedības dēļ. Lai atvieglotu impulsu kodēšanas un izplatīšanās izpēti neironu tīklos,
+izstrādāti formāli impulsu ģenerēšanas modeļi. Vēsturiski visplašāk izmantotie formālie modeļi ir Lapika \cite{abbott1999} un
+Steina \cite{stein1967} izstrādātie \Gls{if} un \Gls{lif} modeļi. Abus modeļus bieži realizē aparatūrā.
 
-Lapika modelētais \Gls{if} neirons sastāv no elektriskās ķēdes ar kondensatoru, kas reprezentē membrānas kapacitāti un uzkrāj ieejas strāvu, līdz tiek sasniegts impulsu ģenerēšanas slieksnis. \Gls{lif} modelis to paplašina, pievienojot paralēli membrānas kapacitātei pieslēgtu membrānas noplūdes rezistoru, izveidojot \ref{fig:lif_circuit}. attēlā parādīto ekvivalento RC ķēdi. Kad membrānas potenciāls sasniedz noteiktu slieksni, tiek ģenerēts darbības potenciāls un kondensators izlādējas. Lai gan dažādu membrānas vadītspēju ietekme netiek ņemta vērā, daudziem mērķiem pietiek ar vienkāršo \Gls{if} modeli.
+Lapika modelētais \Gls{if} neirons sastāv no elektriskās ķēdes ar kondensatoru, kas reprezentē membrānas kapacitāti un uzkrāj
+ieejas strāvu, līdz tiek sasniegts impulsu ģenerēšanas slieksnis. \Gls{lif} modelis to paplašina, pievienojot paralēli
+membrānas kapacitātei pieslēgtu membrānas noplūdes rezistoru, izveidojot \ref{fig:lif_circuit}. attēlā parādīto ekvivalento
+RC ķēdi. Kad membrānas potenciāls sasniedz noteiktu slieksni, tiek ģenerēts darbības potenciāls un kondensators izlādējas.
+Lai gan dažādu membrānas vadītspēju ietekme netiek ņemta vērā, daudziem mērķiem pietiek ar vienkāršo \Gls{if} modeli.
 
 \begin{figure}[hb]
   \centering
-  \includegraphics[width=1.0\linewidth]{fig/lif_circuit_membrane.pdf}
+  \includegraphics[width=0.9\linewidth]{fig/lif_circuit_membrane.pdf}
   \caption{Integrējošā impulsu neirona modelis ar noplūdi. Šūnas membrāna saņem ieejas strāvu $i(t)$, kas palielina membrānas lādiņu.}
   \label{fig:lif_circuit}
 \end{figure}
@@ -34,7 +41,9 @@ Matemātiski šādu impulsu notikumu virkni var aprakstīt šādi \cite{kim2020}
     s(t) = \sum_f \delta(t - t^f)
 \end{equation}
 
-Impulsa brīdī potenciāls atgriežas nullē vai miera stāvoklī \(E_{rest}\), kas kalpo par sākuma nosacījumu nākamajai aprēķinu iterācijai. Alternatīvi membrānas potenciālu var samazināt par impulsu ģenerēšanas slieksni \(\vartheta_{th}\), veicot mīksto atiestatīšanu, kas precīzāk atdarina \Gls{relu} funkciju \cite{hwang2024, park2019}.
+% Impulsa brīdī potenciāls atgriežas nullē vai miera stāvoklī \(E_{rest}\), kas kalpo par sākuma nosacījumu nākamajai aprēķinu
+% iterācijai. Alternatīvi membrānas potenciālu var samazināt par impulsu ģenerēšanas slieksni \(\vartheta_{th}\), veicot mīksto
+% atiestatīšanu, kas precīzāk atdarina \Gls{relu} funkciju \cite{hwang2024, park2019}.
 
 Ja sinaptiskā strāva ir nulle \(i(t) = 0\), membrānas potenciāla vienādojums (\ref{eq:LIF_model}) vienkāršojas līdz
 \begin{equation}
@@ -65,13 +74,13 @@ Liela mēroga \Gls{snn} ar miljoniem neironu un daudziem laika soļiem tas rada 
 %   — laiks.\par}
 \end{figure}
 
-Turklāt ir piedāvātas vairākas precizitātes uzlabošanas metodes \Gls{lif} neirona līmenī, lai atvieglotu apmācību un mazinātu
-precizitātes zudumu \cite{Fang2021, wang2022, guo2022}. Tiešās izplatīšanas laikā sliekšņa operācija, kas kvantē membrānas
-potenciālu līdz 0 vai 1, neizbēgami rada informācijas zudumu. Efektīvs veids, kā mazināt šī vienkāršā modeļa radīto zudumu,
-ir padarīt dažus ar membrānu saistītos hiperparametrus apmācāmus. Nesen darbā \cite{Fang2021} parādīts, ka \Gls{snn} ar
-parametriskiem \Gls{lif} neironiem pārspēj modernākās metodes gan statiskajās, gan neiromorfajās datu kopās. Papildus sinapšu
-svariem par apmācāmu parametru izmantota membrānas laika konstante. Citos darbos \Gls{snn} mācīšanās spēju uzlabošanai
-izmantots impulsu neirons ar adaptīvu slieksni \cite{wang2022}. Darbā \cite{guo2022} sniegts visaptverošs pārskats par
-dažādām parametriskām, neirona līmeņa apmācības metodēm.
+% Turklāt ir piedāvātas vairākas precizitātes uzlabošanas metodes \Gls{lif} neirona līmenī, lai atvieglotu apmācību un mazinātu
+% precizitātes zudumu \cite{Fang2021, wang2022, guo2022}. Tiešās izplatīšanas laikā sliekšņa operācija, kas kvantē membrānas
+% potenciālu līdz 0 vai 1, neizbēgami rada informācijas zudumu. Efektīvs veids, kā mazināt šī vienkāršā modeļa radīto zudumu,
+% ir padarīt dažus ar membrānu saistītos hiperparametrus apmācāmus. Nesen darbā \cite{Fang2021} parādīts, ka \Gls{snn} ar
+% parametriskiem \Gls{lif} neironiem pārspēj modernākās metodes gan statiskajās, gan neiromorfajās datu kopās. Papildus sinapšu
+% svariem par apmācāmu parametru izmantota membrānas laika konstante. Citos darbos \Gls{snn} mācīšanās spēju uzlabošanai
+% izmantots impulsu neirons ar adaptīvu slieksni \cite{wang2022}. Darbā \cite{guo2022} sniegts visaptverošs pārskats par
+% dažādām parametriskām, neirona līmeņa apmācības metodēm.
 
 

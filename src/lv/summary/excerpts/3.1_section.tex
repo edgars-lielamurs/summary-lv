@@ -2,19 +2,23 @@
 
 \Gls{snn} ieejas dati jākodē kā retu impulsu virknes, lai tie atbilstu impulsu neironu darbībai laikā. Tā vietā, lai
 katrā laika solī pārraidītu visu neironu stāvokļus, tiek pārraidīti tikai neironi, kas ģenerē impulsu. Tas būtiski
-samazina pārsūtāmo datu apjomu, ja impulsu aktivitāte ir reta. Vairumā gadījumu izmanto saspiestu \Gls{aer} reprezentāciju
+samazina pārsūtāmo datu apjomu, ja impulsu aktivitāte ir reta. Vairumā gadījumu izmanto saspiestu \textit{adrešu un notikumu
+reprezentāciju} \glsf{aer}
 \cite{sommer2022, plagwitz2025}, kas efektīvi kodē impulsu aktivitāti kā diskrētas notikumu adreses telpā un laikā.
 
-Kā ilustrēts \ref{fig:aer_comm}. attēlā, kad neirons ģenerē impulsu, tā telpiskā pozīcija tiek kodēta adresē un pārraidīta pa sakaru kanālu. Uztvērējā adrese tiek dekodēta, lai atjaunotu impulsa notikumu. Tā kā impulsus ģenerē tikai aktīvie neironi, sakaru joslas platums mainās atkarībā no impulsu skaita, nevis neironu skaita \cite{purohit2022}.
+% Kā ilustrēts \ref{fig:aer_comm}. attēlā,
+Kad neirons ģenerē impulsu, tā telpiskā pozīcija tiek kodēta adresē un pārraidīta pa sakaru kanālu. Uztvērējā adrese tiek
+dekodēta, lai atjaunotu impulsa notikumu. Tā kā impulsus ģenerē tikai aktīvie neironi, sakaru joslas platums mainās atkarībā
+no impulsu skaita, nevis neironu skaita \cite{purohit2022}.
 
-\begin{figure}[!t]
-  \centering
-  \includegraphics[width=0.8\linewidth]{fig/aer_encoder_decoder.png}
-  \caption{AER saziņa.}
-  \label{fig:aer_comm}
-% \par\smallskip
-% {\footnotesize \textit{Sparse event representation} — retināta notikumu reprezentācija; \textit{Arbiter \& AER Encoder} — arbitrs un AER kodētājs; \textit{Address event representation} — adrešu un notikumu reprezentācija; \textit{AER Decoder} — AER dekodētājs.\par}
-\end{figure}
+% \begin{figure}[!t]
+%   \centering
+%   \includegraphics[width=0.8\linewidth]{fig/aer_encoder_decoder.png}
+%   \caption{AER saziņa.}
+%   \label{fig:aer_comm}
+% % \par\smallskip
+% % {\footnotesize \textit{Sparse event representation} — retināta notikumu reprezentācija; \textit{Arbiter \& AER Encoder} — arbitrs un AER kodētājs; \textit{Address event representation} — adrešu un notikumu reprezentācija; \textit{AER Decoder} — AER dekodētājs.\par}
+% \end{figure}
 
 Šajā darbā tradicionālais \Gls{aer} protokols ir paplašināts, lai reprezentētu konvolucionālo \Gls{snn} slāņu radītās daudzkanālu pazīmju kartes. Saskaņā ar šo kodēšanas shēmu katru impulsu attēlo viena vesela skaitļa adrese, kas veidota, bitu līmenī savienojot telpiskos un kanāla indeksus, kā parādīts \ref{fig:aer_bits}. attēlā. Precīzāk, katra impulsa adrese \(a\) tiek kodēta kā bitu lauks:
 \begin{equation}

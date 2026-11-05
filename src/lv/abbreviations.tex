@@ -2,12 +2,17 @@
 \makeglossaries
 
 
-\renewcommand{\glsentryfmt}{\glsentryshort{\glslabel}}
-% \renewcommand{\glsentryfmt}{%
-% \ifglsused{\glslabel}%
-%     {\glsentryshort{\glslabel}\glsifplural{s}{}}%
-%     {\textit{\glsentrylong{\glslabel}\glsifplural{s}{}}     (\glsentryshort{\glslabel}\glsifplural{s}{})}%
-% }
+% \renewcommand{\glsentryfmt}{\glsentryshort{\glslabel}}
+\renewcommand{\glsentryfmt}{%
+\ifglsused{\glslabel}%
+    {\glsentryshort{\glslabel}\glsifplural{s}{}}%
+    {\textit{\glsentrylong{\glslabel}\glsifplural{s}{}}     (\glsentryshort{\glslabel}\glsifplural{s}{})}%
+}
+
+\newcommand{\glsf}[1]{%
+  (\glsentryshort{#1})%
+  \glsunset{#1}%
+}
 
 \renewcommand*{\glsgroupskip}{}
 \newacronym{acc}{ACC}{uzkrāšana}
@@ -35,7 +40,7 @@
 \newacronym{dsp}{DSP}{digitālā signālu apstrāde}
 \newabbreviation{ec}{EC}{evolucionējoša savienojamība}
 \newabbreviation{fifo}{FIFO}{pirmais iekšā, pirmais ārā}
-\newabbreviation{fpga}{FPGA}{laukā programmējams loģisko vārtu masīvs}
+\newabbreviation{fpga}{FPGA}{programmējams loģisko vārtu masīvs}
 \newabbreviation{ff}{FF}{trigeris}
 \newabbreviation{fps}{FPS}{kadri sekundē}
 \newabbreviation{fov}{FoV}{redzes lauks}
@@ -44,7 +49,7 @@
 \newabbreviation{gnn}{GNN}{grafu neironu tīkli}
 \newabbreviation{hbm}{HBM}{liela joslas platuma atmiņa}
 \newabbreviation{hh}{HH}{Hodžkina–Hakslija modelis}
-\newabbreviation{if}{IF}{integrējošais impulsu neirons}
+\newabbreviation{if}{IF}{integrējošais pulsējošs neirons}
 \newabbreviation{isi}{ISI}{starpimpulsu intervāls}
 \newabbreviation{iob}{IOB}{ieejas un izejas bloki}
 \newabbreviation{iou}{IoU}{šķēluma un apvienojuma attiecība}
@@ -64,7 +69,7 @@
 \newabbreviation{nhw}{NHW}{neiromorfā aparatūra}
 \newabbreviation{ocm}{OCM}{mikroshēmas iekšējā atmiņa}
 \newabbreviation{pe}{PE}{apstrādes elementi}
-\newabbreviation{pu}{PU}{apstrādes bloki}
+\newabbreviation{pu}{PU}{apstrādes vienības}
 \newabbreviation{pta}{PTA}{konveijerizēts kokveida summators}
 \newabbreviation{pll}{PLL}{fāzes automātiskās pieskaņošanas cilpa}
 \newabbreviation{pwl}{PWL}{pa daļām lineārs}
@@ -74,10 +79,10 @@
 \newabbreviation{resnet}{ResNet}{atlikuma neironu tīkls}
 \newabbreviation{rnn}{RNN}{rekurentie neironu tīkli}
 \newabbreviation{roc}{ROC}{rangu secības kodēšana}
-\newabbreviation{rsnn}{RSNN}{rekurents impulsu neironu tīkls}
+\newabbreviation{rsnn}{RSNN}{rekurents pulsējošs neironu tīkls}
 \newabbreviation{ssd}{SSD}{viena posma detektors}
 \newabbreviation{stts}{STTS}{telpiski temporālās topoloģijas paraugošana}
-\newabbreviation{snn}{SNN}{impulsu neironu tīkls}
+\newabbreviation{snn}{SNN}{pulsējošs neironu tīkls}
 \newabbreviation{sdram}{SDRAM}{sinhronā dinamiskā brīvpiekļuves atmiņa}
 \newabbreviation{spad}{SPAD}{vienfotona lavīnas fotodiode}
 \newabbreviation{stdp}{STDP}{no impulsu laika atkarīgā plastiskuma metode}
